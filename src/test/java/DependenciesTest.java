@@ -9,10 +9,4 @@ public class DependenciesTest {
 
         Assert.assertTrue(true);
     }
-
-    @Test
-    public void testFalse() {
-
-        Assert.fail();
-    }
 }
