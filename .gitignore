@@ -6,6 +6,7 @@ target/
 ### Allure ###
 .allure/
 /allure-results/
+/*/allure.properties
 
 ### IntelliJ IDEA ###
 .idea/
@@ -37,6 +38,3 @@ build/
 
 ### Mac OS ###
 .DS_Store
-
-### Project ###
-allure.properties
