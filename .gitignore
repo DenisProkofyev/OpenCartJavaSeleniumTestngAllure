@@ -6,7 +6,7 @@ target/
 ### Allure ###
 .allure/
 /allure-results/
-/*/allure.properties
+/src/test/resources/allure.properties
 
 ### IntelliJ IDEA ###
 .idea/
