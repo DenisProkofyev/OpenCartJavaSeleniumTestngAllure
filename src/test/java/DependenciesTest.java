@@ -1,3 +1,4 @@
+import org.testng.Assert;
 import org.testng.annotations.Test;
 
 public class DependenciesTest {
@@ -5,5 +6,7 @@ public class DependenciesTest {
     @Test
     public void testDependencies() {
         System.out.println("Everything works!");
+
+        Assert.assertTrue(true);
     }
 }
