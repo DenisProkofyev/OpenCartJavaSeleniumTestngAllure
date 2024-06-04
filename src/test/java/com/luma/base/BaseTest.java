@@ -14,10 +14,10 @@ public abstract class BaseTest {
     @BeforeMethod
     protected void setup() {
         if (driver == null) {
-            ChromeOptions chromeOptions = new ChromeOptions();
-            chromeOptions.addArguments("--window-size=1920,1080");
-            driver = new ChromeDriver(chromeOptions);
-//            driver = WebDriverManager.chromedriver().dockerScreenResolution("1920x1080x24").create();
+//            ChromeOptions chromeOptions = new ChromeOptions();
+//            chromeOptions.addArguments("--window-size=1920,1080");
+//            driver = new ChromeDriver(chromeOptions);
+            driver = WebDriverManager.chromedriver().create();
         }
         System.out.println("Open the browser");
     }
