@@ -13,8 +13,11 @@ public abstract class BaseTest {
     private WebDriver driver;
 
     private WebDriver createDriver() {
+        WebDriverManager.chromedriver().setup();
+
         ChromeOptions chromeOptions = new ChromeOptions();
-        chromeOptions.addArguments("--window-size=1920,1080");
+//        chromeOptions.addArguments("--window-size=1920,1080");
+        chromeOptions.addArguments("--headless");
         driver = new ChromeDriver(chromeOptions);
 
         return driver;
