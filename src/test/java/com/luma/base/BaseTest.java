@@ -7,9 +7,19 @@ import org.openqa.selenium.chrome.ChromeOptions;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 
+import java.time.Duration;
+
 public abstract class BaseTest {
 
     private WebDriver driver;
+
+    private WebDriver createDriver() {
+        ChromeOptions chromeOptions = new ChromeOptions();
+        chromeOptions.addArguments("--window-size=1920,1080");
+        driver = new ChromeDriver(chromeOptions);
+
+        return driver;
+    }
 
     @BeforeMethod
     protected void setup() {
@@ -17,7 +27,8 @@ public abstract class BaseTest {
 //            ChromeOptions chromeOptions = new ChromeOptions();
 //            chromeOptions.addArguments("--window-size=1920,1080");
 //            driver = new ChromeDriver(chromeOptions);
-            driver = WebDriverManager.chromedriver().create();
+//            driver = WebDriverManager.chromedriver().create();
+            driver = createDriver();
         }
         System.out.println("Open the browser");
     }
