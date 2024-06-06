@@ -84,7 +84,6 @@ public class NavigationTest extends BaseTest {
         Assert.assertEquals(actualTitle, expectedTitle, "Actual title is different");
     }
 
-    @Ignore
     @Test(dataProvider = "componentsCategoryNavigationData", dataProviderClass = TestData.class)
     @Story("Navigation")
     @Severity(SeverityLevel.CRITICAL)
