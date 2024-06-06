@@ -20,10 +20,31 @@ public class TestData {
     public static final String ALL_LAPTOPS_NOTEBOOKS_URL = BASE_URL + "/index.php?route=product/category&path=18";
     public static final String ALL_LAPTOPS_NOTEBOOKS_PAGE_TITLE = "Laptops & Notebooks";
 
+    // Components category
     public static final By COMPONENTS_MENU = By.xpath("//li/a[text()='Components']");
     public static final By ALL_COMPONENTS_DROPDOWN_MENU = By.xpath("//li//a[text()='Show All Components']");
     public static final String ALL_COMPONENTS_URL = BASE_URL + "/index.php?route=product/category&path=25";
     public static final String ALL_COMPONENTS_PAGE_TITLE = "Components";
+    public static final By MICE_AND_TRACKBALLS = By.xpath("//li/a[text()='Mice and Trackballs (0)']");
+    public static final By MONITORS = By.xpath("//li/a[text()='Monitors (2)']");
+    public static final By PRINTERS = By.xpath("//li/a[text()='Printers (0)']");
+    public static final By SCANNERS = By.xpath("//li/a[text()='Scanners (0)']");
+    public static final By WEB_CAMERAS = By.xpath("//li/a[text()='Web Cameras (0)']");
+
+    public static final String MICE_AND_TRACKBALLS_URL = BASE_URL + "/index.php?route=product/category&path=25_29";
+    public static final String MICE_AND_TRACKBALLS_PAGE_TITLE = "Mice and Trackballs";
+
+    public static final String MONITORS_URL = BASE_URL + "/index.php?route=product/category&path=25_28";
+    public static final String MONITORS_PAGE_TITLE = "Monitors";
+
+    public static final String PRINTERS_URL = BASE_URL + "/index.php?route=product/category&path=25_30";
+    public static final String PRINTERS_PAGE_TITLE = "Printers";
+
+    public static final String SCANNERS_URL = BASE_URL + "/index.php?route=product/category&path=25_31";
+    public static final String SCANNERS_PAGE_TITLE = "Scanners";
+
+    public static final String WEB_CAMERAS_URL = BASE_URL + "/index.php?route=product/category&path=25_32";
+    public static final String WEB_CAMERAS_PAGE_TITLE = "Web Cameras";
 
     public static final By MP3_PLAYERS_MENU = By.xpath("//li/a[text()='MP3 Players']");
     public static final By ALL_MP3_PLAYERS_DROPDOWN_MENU = By.xpath("//li//a[text()='Show All MP3 Players']");
@@ -46,8 +67,8 @@ public class TestData {
     public static final String CAMERAS_URL = BASE_URL + "/index.php?route=product/category&path=33";
     public static final String CAMERAS_PAGE_TITLE = "Cameras";
 
-    @DataProvider(name = "navigationWithDropdownData")
-    public static Object[][] getNavMenuWithDropdownData() {
+    @DataProvider(name = "withDropdownNavigationData")
+    public static Object[][] getWithDropdownNavMenuData() {
         return new Object[][] {
                 {BASE_URL, DESKTOPS_MENU, ALL_DESKTOPS_DROPDOWN_MENU, ALL_DESKTOPS_URL, ALL_DESKTOPS_PAGE_TITLE},
                 {BASE_URL, LAPTOPS_NOTEBOOKS_MENU, ALL_LAPTOPS_NOTEBOOKS_DROPDOWN_MENU, ALL_LAPTOPS_NOTEBOOKS_URL, ALL_LAPTOPS_NOTEBOOKS_PAGE_TITLE},
@@ -56,13 +77,24 @@ public class TestData {
         };
     }
 
-    @DataProvider(name = "navigationWithoutDropdownData")
-    public static Object[][] getNavMenuWithoutDropdownData() {
+    @DataProvider(name = "withoutDropdownNavigationData")
+    public static Object[][] getWithoutDropdownNavMenuData() {
         return new Object[][] {
                 {BASE_URL, TABLETS_MENU, TABLETS_URL, TABLETS_PAGE_TITLE},
                 {BASE_URL, SOFTWARE_MENU, SOFTWARE_URL, SOFTWARE_PAGE_TITLE},
                 {BASE_URL, PHONES_PDA_MENU, PHONES_PDA_URL, PHONES_PDA_PAGE_TITLE},
                 {BASE_URL, CAMERAS_MENU, CAMERAS_URL, CAMERAS_PAGE_TITLE}
+        };
+    }
+
+    @DataProvider(name = "componentsCategoryNavigationData")
+    public static Object[][] getComponentsCategoryNavigationData() {
+        return new Object[][] {
+                {BASE_URL, COMPONENTS_MENU, MICE_AND_TRACKBALLS, MICE_AND_TRACKBALLS_URL, MICE_AND_TRACKBALLS_PAGE_TITLE},
+                {BASE_URL, COMPONENTS_MENU, MONITORS, MONITORS_URL, MONITORS_PAGE_TITLE},
+                {BASE_URL, COMPONENTS_MENU, PRINTERS, PRINTERS_URL, PRINTERS_PAGE_TITLE},
+                {BASE_URL, COMPONENTS_MENU, SCANNERS, SCANNERS_URL, SCANNERS_PAGE_TITLE},
+                {BASE_URL, COMPONENTS_MENU, WEB_CAMERAS, WEB_CAMERAS_URL, WEB_CAMERAS_PAGE_TITLE}
         };
     }
 }
