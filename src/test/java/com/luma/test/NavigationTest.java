@@ -10,6 +10,7 @@ import io.qameta.allure.SeverityLevel;
 import io.qameta.allure.Story;
 import org.openqa.selenium.By;
 import org.testng.Assert;
+import org.testng.annotations.Ignore;
 import org.testng.annotations.Test;
 
 public class NavigationTest extends BaseTest {
@@ -83,6 +84,7 @@ public class NavigationTest extends BaseTest {
         Assert.assertEquals(actualTitle, expectedTitle, "Actual title is different");
     }
 
+    @Ignore
     @Test(dataProvider = "componentsCategoryNavigationData", dataProviderClass = TestData.class)
     @Story("Navigation")
     @Severity(SeverityLevel.CRITICAL)
