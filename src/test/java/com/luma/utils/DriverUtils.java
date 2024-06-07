@@ -17,12 +17,11 @@ public class DriverUtils {
         chromeOptions.addArguments("--no-sandbox");
         chromeOptions.addArguments("--disable-dev-shm-usage");
     }
+
     public static WebDriver createDriver(WebDriver driver) {
-        if (driver == null) {
-            return new ChromeDriver(chromeOptions);
-        } else {
+        if (driver != null) {
             driver.quit();
-            return new ChromeDriver(chromeOptions);
         }
+        return new ChromeDriver(chromeOptions);
     }
 }
