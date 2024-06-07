@@ -19,9 +19,11 @@ public class DriverUtils {
     }
 
     public static WebDriver createDriver(WebDriver driver) {
-        if (driver != null) {
+        if (driver == null) {
+            return new ChromeDriver(chromeOptions);
+        } else {
             driver.quit();
+            return new ChromeDriver(chromeOptions);
         }
-        return new ChromeDriver(chromeOptions);
     }
 }
