@@ -15,10 +15,10 @@ import org.testng.annotations.Test;
 
 public class NavigationTest extends BaseTest {
 
-    @Test
+    @Test(description = "TC_01 Verify the Store base URL")
     @Story("Navigation")
     @Severity(SeverityLevel.BLOCKER)
-    @Description("TC_01 Verify the Store base URL")
+    @Description("Verify the Store base URL is opened via current URL and the page title")
     public void testOpenStoreBaseURL() {
 
         final String expectedURL = TestData.BASE_URL + "/";

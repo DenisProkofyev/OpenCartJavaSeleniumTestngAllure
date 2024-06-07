@@ -1,37 +1,30 @@
 package com.luma.base;
 
+import com.luma.utils.DriverUtils;
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.BeforeSuite;
+
+import java.sql.Driver;
 
 
 public abstract class BaseTest {
 
     private WebDriver driver;
 
-    private WebDriver createDriver() {
+    @BeforeSuite
+    protected void setupWebDriverManager() {
         WebDriverManager.chromedriver().setup();
-
-        ChromeOptions chromeOptions = new ChromeOptions();
-        chromeOptions.addArguments("--window-size=1920,1080", "--headless", "--disable-gpu");
-//        chromeOptions.addArguments("--window-size=1920,1080");
-        driver = new ChromeDriver(chromeOptions);
-
-        return driver;
     }
 
     @BeforeMethod
-    protected void setup() {
-        if (driver == null) {
-//            ChromeOptions chromeOptions = new ChromeOptions();
-//            chromeOptions.addArguments("--window-size=1920,1080");
-//            driver = new ChromeDriver(chromeOptions);
-//            driver = WebDriverManager.chromedriver().create();
-            driver = createDriver();
-        }
+    protected void setupDriver() {
+        this.driver = DriverUtils.createDriver(getDriver());
+
         System.out.println("Open the browser");
     }
 
