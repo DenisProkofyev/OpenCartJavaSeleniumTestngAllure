@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd" >
+<suite name="CrossBrowser Test Suite" parallel="tests" thread-count="2" data-provider-thread-count="2">
+    <test name = "ChromeTest" verbose="2" preserve-order="true">
+        <parameter name="browser" value="chrome" />
+        <classes>
+            <class name="com.luma.test.NavigationTest">
+<!--                <methods>-->
+<!--                    <include name="testNavigationBarMenuWithDropdown"/>-->
+<!--                    <include name="testNavigationBarMenuWithoutDropdown"/>-->
+<!--                    <include name="testComponentsDropdownNavigation"/>-->
+<!--                </methods>/>-->
+            </class>
+        </classes>
+    </test>
+    <test name = "FirefoxTest" verbose="2" preserve-order="true">
+        <parameter name="browser" value="firefox" />
+        <classes>
+            <class name="com.luma.test.NavigationTest"/>
+<!--                <methods>-->
+<!--                    <include name="testNavigationBarMenuWithDropdown"/>-->
+<!--                    <include name="testNavigationBarMenuWithoutDropdown"/>-->
+<!--                    <include name="testComponentsDropdownNavigation"/>-->
+<!--                </methods>/>-->
+<!--            </class>-->
+        </classes>
+    </test>
+</suite>
+
+<!--<?xml version="1.0" encoding="UTF-8"?>-->
+<!--<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">-->
+<!--<suite name="CrossBrowser Test Suite" parallel="methods" thread-count="2" data-provider-thread-count="2">-->
+<!--    <test verbose="2" preserve-order="true"-->
+<!--          name="C:/Users/Denis/IdeaProjects/LumaJavaSeleniumTestngAllure/src/test/java/com/luma/test/NavigationTest.java">-->
+<!--        <classes>-->
+<!--            <class name="com.luma.test.NavigationTest">-->
+<!--                <methods>-->
+<!--                    <include name="testNavigationBarMenuWithDropdown"/>-->
+<!--                    <include name="testNavigationBarMenuWithoutDropdown"/>-->
+<!--                    <include name="testComponentsDropdownNavigation"/>-->
+<!--                </methods>-->
+<!--            </class>-->
+<!--        </classes>-->
+<!--    </test>-->
+<!--</suite>-->
+
+
+<!--<suite name="CrossBrowser Test Suite" parallel="methods" thread-count="2" data-provider-thread-count="2">-->
+<!--<test verbose="2" preserve-order="true" name="FirefoxTest">-->
+<!--    <parameter name="browser" value="chrome" />-->
+<!--    <classes>-->
+<!--        <class name="com.luma.test.NavigationTest">-->
+<!--            <methods>-->
+<!--                <include name="testNavigationBarMenuWithDropdown"/>-->
+<!--                <include name="testNavigationBarMenuWithoutDropdown"/>-->
+<!--                <include name="testComponentsDropdownNavigation"/>-->
+<!--            </methods>/>-->
+<!--        </class>&ndash;&gt;-->
+<!--    </classes>-->
+<!--</test>-->
+<!--<test name="ChromeTest">-->
+<!--    <parameter name="browser" value= "chrome" />-->
+<!--    <classes>-->
+<!--        <class name="com.luma.test.NavigationTest" />-->
+<!--    </classes>-->
+<!--</test>-->
+<!--</suite>-->
+
