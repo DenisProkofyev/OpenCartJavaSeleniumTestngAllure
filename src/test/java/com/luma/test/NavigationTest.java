@@ -14,8 +14,12 @@ import org.testng.annotations.Test;
 
 public class NavigationTest extends BaseTest {
 
-    @Test(description = "TC_01 Verify the Store base URL", groups = {"Smoke", "Regression"})
-    @Story("Navigation")
+    @Test(
+            description = "TC_01 Verify the Store base URL"
+//            groups = {"Smoke", "Regression"},
+//            testName = "NAVIGATION | Navigate to top menu"
+            )
+//    @Story("Navigation")
     @Severity(SeverityLevel.BLOCKER)
     @Description("Verify the Store base URL is opened via current URL and the page title")
     public void testOpenStoreBaseURL() {
