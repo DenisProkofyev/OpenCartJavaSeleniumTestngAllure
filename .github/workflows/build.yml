@@ -2,7 +2,7 @@ name: Java CI with Maven
 
 on:
   pull_request:
-    branches: main
+    branches: [ main ]
 
 permissions:
   contents: write
@@ -42,10 +42,6 @@ jobs:
         key: ${{ runner.os }}-maven-${{ hashFiles('**/pom.xml') }}
         restore-keys: |
           ${{ runner.os }}-maven-
-
-    - name: Install Firefox on MacOS
-      if: matrix.os == 'macos-latest'
-      run: brew install --cask firefox
         
     - name: Build with Maven
       run: mvn -B package --file pom.xml
