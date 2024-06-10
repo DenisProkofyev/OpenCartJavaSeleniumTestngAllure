@@ -28,7 +28,6 @@ public class DriverUtils {
         firefoxOptions.addArguments("--disable-gpu");
         firefoxOptions.addArguments("--no-sandbox");
         firefoxOptions.addArguments("--disable-dev-shm-usage");
-        firefoxOptions.setBinary("/Applications/Firefox.app/Contents/MacOS/firefox-bin");
     }
 
     private static WebDriver createChromeDriver(WebDriver driver) {
