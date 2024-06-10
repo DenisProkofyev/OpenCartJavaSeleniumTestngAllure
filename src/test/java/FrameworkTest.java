@@ -2,10 +2,10 @@ import org.testng.Assert;
 import org.testng.annotations.Ignore;
 import org.testng.annotations.Test;
 
-public class DependenciesTest {
+public class FrameworkTest {
 
     @Test
-    public void testDependencies() {
+    public void testFramework() {
         System.out.println("Everything works!");
 
         Assert.assertTrue(true);
