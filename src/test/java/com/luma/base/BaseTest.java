@@ -24,7 +24,7 @@ public abstract class BaseTest {
     }
 
     @BeforeMethod
-    @Parameters({"browser"})
+    @Parameters("browser")
     protected void setupDriver(@Optional("chrome") String browser, ITestResult result) {
         Reporter.log("----------------------------------", true);
         Reporter.log("RUN " + result.getMethod().getMethodName(), true);
@@ -42,7 +42,7 @@ public abstract class BaseTest {
 
 
     @AfterMethod(alwaysRun = true)
-    @Parameters({"browser"})
+    @Parameters("browser")
     protected void tearDown(@Optional("chrome") String browser, ITestResult result) {
         Reporter.log(result.getMethod().getMethodName() + ": " + ReportUtils.getTestStatus(result), true);
         if (driver != null) {
