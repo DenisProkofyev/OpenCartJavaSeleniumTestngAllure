@@ -19,6 +19,7 @@ jobs:
       max-parallel: 4
       matrix:
         os: [ubuntu-latest, windows-latest, macos-latest]
+        browser: [chrome, firefox]
     
     runs-on: ${{ matrix.os }}
 
@@ -47,7 +48,7 @@ jobs:
       run: mvn -B package --file pom.xml
 
     - name: Run tests with Maven
-      run: mvn test
+      run: mvn test -Dbrowser=${{ matrix.browser }}
 
     - name: Test Reporter
       uses: dorny/test-reporter@v1.9.1
