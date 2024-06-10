@@ -29,6 +29,8 @@ jobs:
             browser: firefox
           - os: macos-latest
             browser: chrome
+          - os: macos-latest
+            browser: firefox
     
     runs-on: ${{ matrix.os }}
 
