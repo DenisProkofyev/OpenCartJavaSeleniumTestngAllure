@@ -4,8 +4,6 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
-import javax.naming.directory.SearchResult;
-
 public class HomePage extends BasePage {
 
     @FindBy(name = "search")
