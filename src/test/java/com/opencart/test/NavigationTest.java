@@ -1,8 +1,8 @@
-package com.luma.test;
+package com.opencart.test;
 
-import com.luma.base.BaseTest;
-import com.luma.base.TestUtils;
-import com.luma.data.TestData;
+import com.opencart.base.BaseTest;
+import com.opencart.base.TestUtils;
+import com.opencart.data.TestData;
 import io.qameta.allure.Allure;
 import io.qameta.allure.Description;
 import io.qameta.allure.Severity;
@@ -15,20 +15,17 @@ import org.testng.annotations.Test;
 public class NavigationTest extends BaseTest {
 
     @Test(
-            description = "TC_01 Verify the Store base URL"
+            description = "TC_01 Verify the Store home page"
 //            groups = {"Smoke", "Regression"},
 //            testName = "NAVIGATION | Navigate to top menu"
             )
-//    @Story("Navigation")
+    @Story("Navigation")
     @Severity(SeverityLevel.BLOCKER)
-    @Description("Verify the Store base URL is opened via current URL and the page title")
-    public void testOpenStoreBaseURL() {
+    @Description("Verify the Store home page is opened via current URL and the page title")
+    public void testStoreHomePageURLAndTitle() {
 
         final String expectedURL = TestData.BASE_URL + "/";
         final String expectedTitle = TestData.BASE_URL_TITLE;
-
-        Allure.step("Open the Store home page");
-        getDriver().get(TestData.BASE_URL);
 
         final String actualURL = getDriver().getCurrentUrl();
         final String actualTitle = getDriver().getTitle();
@@ -44,10 +41,7 @@ public class NavigationTest extends BaseTest {
     @Story("Navigation")
     @Severity(SeverityLevel.CRITICAL)
     @Description("TC_02 Verify the Store navigation menu options via dropdown")
-    public void testNavigationBarMenuWithDropdown(String baseURL, By navBarMenu, By navBarDropdownMenu, String expectedURL, String expectedTitle) {
-
-        Allure.step("Open the Store home page");
-        getDriver().get(baseURL);
+    public void testNavigationBarMenuWithDropdown(By navBarMenu, By navBarDropdownMenu, String expectedURL, String expectedTitle) {
 
         Allure.step("Hover over the menu option");
         TestUtils.hoverOverAnElement(this, navBarMenu);
@@ -69,10 +63,7 @@ public class NavigationTest extends BaseTest {
     @Story("Navigation")
     @Severity(SeverityLevel.CRITICAL)
     @Description("TC_03 Verify the Store navigation menu options without dropdown")
-    public void testNavigationBarMenuWithoutDropdown(String baseURL, By navBarMenu, String expectedURL, String expectedTitle) {
-
-        Allure.step("Open the Store home page");
-        getDriver().get(baseURL);
+    public void testNavigationBarMenuWithoutDropdown(By navBarMenu, String expectedURL, String expectedTitle) {
 
         Allure.step("Click on the menu option");
         getDriver().findElement(navBarMenu).click();
@@ -91,10 +82,8 @@ public class NavigationTest extends BaseTest {
     @Story("Navigation")
     @Severity(SeverityLevel.CRITICAL)
     @Description("TC_04 Verify the 'Components' category dropdown options navigation")
-    public void testComponentsDropdownNavigation(String baseURL, By componentsCategory, By componentsDropdownMenuOption,
+    public void testComponentsDropdownNavigation(By componentsCategory, By componentsDropdownMenuOption,
                                                  String expectedURL, String expectedTitle) {
-        Allure.step("Open the Store home page");
-        getDriver().get(baseURL);
 
         Allure.step("Hover over the 'Components' category menu option");
         TestUtils.hoverOverAnElement(this, componentsCategory);
