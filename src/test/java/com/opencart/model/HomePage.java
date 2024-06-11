@@ -9,11 +9,26 @@ public class HomePage extends BasePage {
     @FindBy(name = "search")
     private WebElement searchField;
 
+    @FindBy(css = "[class$='search']")
+    private WebElement searchButton;
+
     public HomePage(WebDriver driver) {
         super(driver);
     }
 
     public boolean isSearchFieldVisible() {
         return searchField.isDisplayed();
+    }
+
+    public HomePage typeInSearchValue(String value) {
+        searchField.sendKeys(value);
+
+        return this;
+    }
+
+    public SearchResultPage clickSearchButton() {
+        searchButton.click();
+
+        return new SearchResultPage(getDriver());
     }
 }

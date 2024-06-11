@@ -23,4 +23,20 @@ public class SearchTest extends BaseTest {
         Allure.step("Verify the Search field is visible");
         Assert.assertTrue(isSearchFieldVisible, "The Search field is not visible");
     }
+
+    @Test
+    @Story("Search field")
+    @Severity(SeverityLevel.NORMAL)
+    @Description("Verify the search result page heading")
+    public void testSearchResultInPageHeading() {
+        final String searchValue = "Samsung";
+
+        String searchPageHeading = new HomePage(getDriver())
+                .typeInSearchValue(searchValue)
+                .clickSearchButton()
+                .getPageHeading();
+
+        Allure.step("Verify the Search result page heading has '" + searchValue + "'");
+        Assert.assertEquals(searchPageHeading, searchValue);
+    }
 }
