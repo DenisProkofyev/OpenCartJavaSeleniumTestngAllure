@@ -39,4 +39,21 @@ public class SearchTest extends BaseTest {
         Allure.step("Verify the Search result page heading has '" + searchValue + "'");
         Assert.assertEquals(searchPageHeading, searchValue);
     }
+
+    @Test
+    @Story("Search field")
+    @Severity(SeverityLevel.MINOR)
+    @Description("Verify the message when the search term does not match any products")
+    public void testMessageForEmptySearchResult() {
+        final String searchValue = "Xiaomi";
+        final String expectedNoSearchResultMessage = "There is no product that matches the search criteria.";
+
+        String actualNoSearchResultMessage = new HomePage(getDriver())
+                .typeInSearchValue(searchValue)
+                .clickSearchButton()
+                .getNoResultsMessage();
+
+        Allure.step("Verify the empty search result message");
+        Assert.assertEquals(actualNoSearchResultMessage, expectedNoSearchResultMessage);
+    }
 }
