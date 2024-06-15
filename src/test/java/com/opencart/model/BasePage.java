@@ -8,10 +8,4 @@ public abstract class BasePage extends BaseModel {
     public BasePage(WebDriver driver) {
         super(driver);
     }
-
-    public void acceptAlert() {
-        Alert alert = getDriver().switchTo().alert();
-        System.out.println("Alert text: " + alert.getText());
-        alert.accept();
-    }
 }
