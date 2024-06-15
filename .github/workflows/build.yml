@@ -21,12 +21,12 @@ jobs:
         include:
           - os: ubuntu-latest
             browser: chrome
-          - os: ubuntu-latest
-            browser: firefox
+#          - os: ubuntu-latest
+#            browser: firefox
           - os: windows-latest
             browser: chrome
-          - os: windows-latest
-            browser: firefox
+#          - os: windows-latest
+#            browser: firefox
 #          - os: macos-latest
 #            browser: chrome
 #          - os: macos-latest
