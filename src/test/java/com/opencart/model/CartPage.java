@@ -18,13 +18,16 @@ public class CartPage extends BasePage {
     }
 
     public String getAddedItemName() {
+        acceptAlert();
         getWait2().until(ExpectedConditions.visibilityOf(addedItemName));
 
         return addedItemName.getText();
     }
 
     public String getAddedGoodsQuantity() {
+        acceptAlert();
         getWait2().until(ExpectedConditions.visibilityOf(addedItemQuantity));
+
         return addedItemQuantity.getAttribute("value");
     }
 }
