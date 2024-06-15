@@ -49,6 +49,8 @@ public class TabletsPage extends BasePage{
     }
 
     public String getCartPreviewAddedItemName() {
+        getWait2().until(ExpectedConditions.visibilityOf(cartPreviewAddedItemName));
+
         return cartPreviewAddedItemName.getText();
     }
 

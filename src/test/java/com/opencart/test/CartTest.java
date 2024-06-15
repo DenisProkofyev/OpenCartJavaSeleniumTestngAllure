@@ -8,7 +8,7 @@ import org.testng.annotations.Test;
 public class CartTest extends BaseTest {
 
     @Test
-    public void testItemNameViaCartPreview() {
+    public void testAddedItemNameViaCartPreview() {
         final String expectedItemName = "Samsung Galaxy Tab 10.1";
 
         String actualAddedItemName = new HomePage(getDriver())
@@ -21,14 +21,39 @@ public class CartTest extends BaseTest {
     }
 
     @Test
-    public void testItemQuantityViaCartPreview() {
+    public void testAddedItemQuantityViaCartPreview() {
 
-        String actualAddedItemName = new HomePage(getDriver())
+        String actualAddedItemQuantity = new HomePage(getDriver())
                 .openTabletsCategory()
                 .addTabletToCart()
                 .clickPreviewCartButton()
                 .getCartPreviewAddedItemQuantity();
 
-        Assert.assertEquals(actualAddedItemName, "1");
+        Assert.assertEquals(actualAddedItemQuantity, "1");
+    }
+
+    @Test
+    public void testAddedItemNameViaCart() {
+        final String expectedItemName = "Samsung Galaxy Tab 10.1";
+
+        String actualAddedItemName = new HomePage(getDriver())
+                .openTabletsCategory()
+                .addTabletToCart()
+                .clickCartButton()
+                .getAddedItemName();
+
+        Assert.assertEquals(actualAddedItemName, expectedItemName);
+    }
+
+    @Test
+    public void testAddedItemQuantityViaCart() {
+
+        String actualAddedItemQuantity = new HomePage(getDriver())
+                .openTabletsCategory()
+                .addTabletToCart()
+                .clickCartButton()
+                .getAddedGoodsQuantity();
+
+        Assert.assertEquals(actualAddedItemQuantity, "1");
     }
 }
