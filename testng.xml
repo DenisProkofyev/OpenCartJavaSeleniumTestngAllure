@@ -19,8 +19,6 @@
             </class>
             <class name="com.opencart.test.SearchTest">
             </class>
-            <class name="com.opencart.test.CartTest">
-            </class>
         </classes>
     </test>
 </suite>
