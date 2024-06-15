@@ -12,6 +12,9 @@ public class HomePage extends BasePage {
     @FindBy(css = "[class$='search']")
     private WebElement searchButton;
 
+    @FindBy(linkText = "Tablets")
+    private WebElement tabletsLink;
+
     public HomePage(WebDriver driver) {
         super(driver);
     }
@@ -30,5 +33,11 @@ public class HomePage extends BasePage {
         searchButton.click();
 
         return new SearchResultPage(getDriver());
+    }
+
+    public TabletsPage openTabletsCategory() {
+        tabletsLink.click();
+
+        return new TabletsPage(getDriver());
     }
 }
