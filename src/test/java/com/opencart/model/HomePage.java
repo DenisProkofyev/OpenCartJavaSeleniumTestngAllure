@@ -1,5 +1,6 @@
 package com.opencart.model;
 
+import io.qameta.allure.Step;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -14,6 +15,12 @@ public class HomePage extends BasePage {
 
     @FindBy(linkText = "Tablets")
     private WebElement tabletsLink;
+
+    @FindBy(linkText = "Desktops")
+    private WebElement desktopsLink;
+
+    @FindBy(css = "[href$='20_27']")
+    private WebElement macCategoryLink;
 
     public HomePage(WebDriver driver) {
         super(driver);
@@ -39,5 +46,19 @@ public class HomePage extends BasePage {
         tabletsLink.click();
 
         return new TabletsPage(getDriver());
+    }
+
+    @Step("Hover over 'Desktops' category")
+    public HomePage hoverOverDesktopsCategory() {
+        hoverOverElement(desktopsLink);
+
+        return this;
+    }
+
+    @Step("Open Mac subcategory")
+    public MacSubCategoryPage openMacSubCategory() {
+        macCategoryLink.click();
+
+        return new MacSubCategoryPage(getDriver());
     }
 }

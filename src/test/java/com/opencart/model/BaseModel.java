@@ -11,6 +11,8 @@ public abstract class BaseModel {
 
     private WebDriverWait wait2;
 
+    private WebDriverWait wait5;
+
     protected BaseModel(WebDriver driver) {
         this.driver = driver;
 
@@ -27,5 +29,13 @@ public abstract class BaseModel {
         }
 
         return wait2;
+    }
+
+    protected WebDriverWait getWait5() {
+        if (wait5 == null) {
+            wait5 = new WebDriverWait(getDriver(), Duration.ofSeconds(5));
+        }
+
+        return wait5;
     }
 }

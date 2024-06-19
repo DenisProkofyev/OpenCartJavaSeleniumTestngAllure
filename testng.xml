@@ -10,6 +10,8 @@
             </class>
             <class name="com.opencart.test.CartTest">
             </class>
+            <class name="com.opencart.test.ProductTest">
+            </class>
         </classes>
     </test>
 <!--    <test name = "FirefoxTest" verbose="2" preserve-order="true">-->
