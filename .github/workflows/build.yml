@@ -45,11 +45,11 @@ jobs:
           ${{ runner.os }}-maven-
 
     - name: Install Chrome on MacOS
-      if: matrix.os == 'macos-13'
+      if: matrix.os == 'macos-13' && matrix.browser == 'chrome'
       run: brew install --cask google-chrome
 
     - name: Install Firefox on MacOS
-      if: matrix.os == 'macos-13'
+      if: matrix.os == 'macos-13' && matrix.browser == 'firefox'
       run: brew install --cask firefox
         
 #    - name: Build with Maven
