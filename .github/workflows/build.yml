@@ -51,9 +51,13 @@ jobs:
 #    - name: Build with Maven
 #      run: mvn -B package --file pom.xml
 
-    - name: Build with Maven
-#      if: ${{ matrix.os == 'ubuntu-latest' }}
-      run: mvn clean -e install -DskipTests=true
+    - name: Build with Maven for Ubuntu and macOS
+      if: ${{ matrix.os == 'ubuntu-latest' || matrix.os == 'macos-13' }}
+      run: mvn clean -e install -Dmaven.test.skip=true
+
+    - name: Build with Maven for Windows
+      if: ${{ matrix.os == 'windows-latest' }}
+      run: mvn clean -e install '-Dmaven.test.skip=true'
 
 #    - name: Test Framework
 #      run: mvn clean test -Dtest=FrameworkTest
