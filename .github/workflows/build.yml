@@ -16,7 +16,7 @@ jobs:
     name: Build On
 
     strategy:
-      max-parallel: 2
+      max-parallel: 4
       matrix:
         os: [ ubuntu-latest, windows-latest, macos-13 ]
         browser: [ chrome, firefox ]
@@ -58,8 +58,16 @@ jobs:
 #    - name: Test Framework
 #      run: mvn clean test -Dtest=FrameworkTest
 
-    - name: Run tests with Maven
-      run: mvn test -Dbrowser=${{ matrix.browser }}
+#    - name: Run tests with Maven
+#      run: mvn test -Dbrowser=${{ matrix.browser }}
+
+    - name: Run tests with Maven for Chrome
+      if: matrix.browser == 'chrome'
+      run: mvn test -DsuiteFile=testng-chrome.xml
+
+    - name: Run tests with Maven for Firefox
+      if: matrix.browser == 'firefox'
+      run: mvn test -DsuiteFile=testng-firefox.xml
 
     - name: Test Reporter
       uses: dorny/test-reporter@v1.9.1
