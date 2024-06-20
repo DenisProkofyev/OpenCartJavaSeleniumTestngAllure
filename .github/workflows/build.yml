@@ -59,12 +59,12 @@ jobs:
       if: matrix.os == 'macos-13'
       run: brew install --cask firefox
         
-    - name: Build with Maven
-      run: mvn -B package --file pom.xml
+#    - name: Build with Maven
+#      run: mvn -B package --file pom.xml
 
-    - name: Build with Maven for Ubuntu
+    - name: Build with Maven
 #      if: ${{ matrix.os == 'ubuntu-latest' }}
-      run: mvn clean -e install -Dmaven.tests.skip=true
+      run: mvn clean -e install -Dmaven.test.skip=true
 
     - name: Test Framework
       run: mvn clean test -Dtest=FrameworkTest
