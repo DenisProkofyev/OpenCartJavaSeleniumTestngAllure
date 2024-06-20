@@ -63,11 +63,13 @@ jobs:
 
     - name: Run tests with Maven for Chrome
       if: matrix.browser == 'chrome'
-      run: mvn test -DsuiteFile=testng-chrome.xml
+#      run: mvn test -DsuiteFile=testng-chrome.xml
+      run: mvn clean test -Pchrome
 
     - name: Run tests with Maven for Firefox
       if: matrix.browser == 'firefox'
-      run: mvn test -DsuiteFile=testng-firefox.xml
+#      run: mvn test -DsuiteFile=testng-firefox.xml
+      run: mvn clean test -Pfirefox
 
     - name: Test Reporter
       uses: dorny/test-reporter@v1.9.1
