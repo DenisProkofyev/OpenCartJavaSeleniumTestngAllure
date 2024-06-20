@@ -15,7 +15,7 @@ public class ProductTest extends BaseTest {
 
     @Test
     @Story("Product page")
-    @Severity(SeverityLevel.CRITICAL)
+    @Severity(SeverityLevel.NORMAL)
     @Description("Verify the opened product name")
     public void testProductName() {
 
@@ -31,7 +31,7 @@ public class ProductTest extends BaseTest {
 
     @Test
     @Story("Product page")
-    @Severity(SeverityLevel.NORMAL)
+    @Severity(SeverityLevel.MINOR)
     @Description("Verify the opened product breadcrumb path")
     public void testProductPath() {
 

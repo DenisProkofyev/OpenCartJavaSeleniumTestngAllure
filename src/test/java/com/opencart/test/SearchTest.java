@@ -17,6 +17,7 @@ public class SearchTest extends BaseTest {
     @Severity(SeverityLevel.CRITICAL)
     @Description("Verify the search field visibility")
     public void testSearchFieldVisibility() {
+
         boolean isSearchFieldVisible = new HomePage(getDriver())
                 .isSearchFieldVisible();
 
