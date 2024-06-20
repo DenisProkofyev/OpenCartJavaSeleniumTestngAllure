@@ -16,7 +16,7 @@ jobs:
     name: Build On
 
     strategy:
-      max-parallel: 4
+      max-parallel: 6
       matrix:
         os: [ ubuntu-latest, windows-latest, macos-13 ]
         browser: [ chrome, firefox ]
@@ -43,6 +43,10 @@ jobs:
         key: ${{ runner.os }}-maven-${{ hashFiles('**/pom.xml') }}
         restore-keys: |
           ${{ runner.os }}-maven-
+
+    - name: Install Chrome on MacOS
+      if: matrix.os == 'macos-13'
+      run: brew install --cask google-chrome
 
     - name: Install Firefox on MacOS
       if: matrix.os == 'macos-13'
