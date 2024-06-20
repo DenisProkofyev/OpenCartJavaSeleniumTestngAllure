@@ -19,12 +19,12 @@ public class CartPage extends BasePage {
 
     public String getAddedItemName() {
         try {
-            getWait2().until(ExpectedConditions.visibilityOf(addedItemName));
+            getWait5().until(ExpectedConditions.visibilityOf(addedItemName));
             return addedItemName.getText();
         } catch (org.openqa.selenium.UnhandledAlertException e) {
             handleAlertIfPresent();
 
-            getWait2().until(ExpectedConditions.visibilityOf(addedItemName));
+            getWait5().until(ExpectedConditions.visibilityOf(addedItemName));
             return addedItemName.getText();
         }
     }
