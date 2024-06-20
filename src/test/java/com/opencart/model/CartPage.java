@@ -31,11 +31,11 @@ public class CartPage extends BasePage {
 
     public String getAddedGoodsQuantity() {
         try {
-            getWait5().until(ExpectedConditions.visibilityOf(addedItemQuantity));
+            getWait2().until(ExpectedConditions.visibilityOf(addedItemQuantity));
             return addedItemQuantity.getAttribute("value");
         } catch (org.openqa.selenium.UnhandledAlertException e) {
             handleAlertIfPresent();
-            getWait5().until(ExpectedConditions.visibilityOf(addedItemQuantity));
+            getWait2().until(ExpectedConditions.visibilityOf(addedItemQuantity));
 
             return addedItemQuantity.getAttribute("value");
         }
