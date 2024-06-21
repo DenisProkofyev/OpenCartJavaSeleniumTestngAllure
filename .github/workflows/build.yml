@@ -19,7 +19,7 @@ jobs:
       max-parallel: 4
       matrix:
         os: [ ubuntu-latest, windows-latest, macos-13 ]
-        browser: [ chrome, firefox ]
+#        browser: [ chrome, firefox ]
     
     runs-on: ${{ matrix.os }}
 
@@ -65,22 +65,16 @@ jobs:
 #    - name: Run tests with Maven
 #      run: mvn test -Dbrowser=${{ matrix.browser }}
 
-    - name: Run tests with Maven for Chrome
-      if: matrix.browser == 'chrome'
-#      run: mvn test -DsuiteFile=testng-chrome.xml
+    - name: Run tests with Maven on Windows and macOS with Chrome
+      if: matrix.browser == 'chrome' && matrix.os == 'windows-latest' || matrix.os == 'macos-13'
       run: mvn clean test -Pchrome
 
-    - name: Run tests with Maven for Firefox
-      if: matrix.browser == 'firefox'
-#      run: mvn test -DsuiteFile=testng-firefox.xml
+    - name: Run tests with Maven on Windows and macOS with Firefox
+      if: matrix.browser == 'firefox' && matrix.os == 'windows-latest' || matrix.os == 'macos-13'
       run: mvn test -Pfirefox
 
-    - name: Cross-browser testing for Windows
-      if: ${{ matrix.os == 'windows-latest' }}
-      run: mvn test '-Dsurefire.suiteXmlFiles=xmlSuits/crossBrowser.xml'
-
-    - name: Cross-browser testing for Windows
-      if: ${{ matrix.os == 'ubuntu-latest' || matrix.os == 'macos-13'}}
+    - name: Cross-browser testing for Ubuntu
+      if: ${{ matrix.os == 'ubuntu-latest' }}
       run: mvn test -Dsurefire.suiteXmlFiles=xmlSuits/crossBrowser.xml
 
     - name: Test Reporter
