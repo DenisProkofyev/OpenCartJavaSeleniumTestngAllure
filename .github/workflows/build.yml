@@ -44,10 +44,6 @@ jobs:
         restore-keys: |
           ${{ runner.os }}-maven-
 
-    - name: Install Chrome on MacOS
-      if: matrix.os == 'macos-13' && matrix.browser == 'chrome'
-      run: brew install --cask google-chrome
-
     - name: Install Firefox on MacOS
       if: matrix.os == 'macos-13' && matrix.browser == 'firefox'
       run: brew install --cask firefox
@@ -77,7 +73,10 @@ jobs:
     - name: Run tests with Maven for Firefox
       if: matrix.browser == 'firefox'
 #      run: mvn test -DsuiteFile=testng-firefox.xml
-      run: mvn clean test -Pfirefox
+      run: mvn test -Pfirefox
+
+    - name: Cross-browser testing
+      run: mvn test -Dsurefire.suiteXmlFiles=xmlSuits/crossBrowser.xml
 
     - name: Test Reporter
       uses: dorny/test-reporter@v1.9.1

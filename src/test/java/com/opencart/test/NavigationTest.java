@@ -15,8 +15,8 @@ import org.testng.annotations.Test;
 public class NavigationTest extends BaseTest {
 
     @Test(
-            description = "TC_01 Verify the Store home page"
-//            groups = {"Smoke", "Regression"},
+//            description = "TC_01 Verify the Store home page",
+            groups = "smoke"
 //            testName = "NAVIGATION | Navigate to top menu"
             )
     @Story("Navigation")
@@ -37,7 +37,8 @@ public class NavigationTest extends BaseTest {
         Assert.assertEquals(actualTitle, expectedTitle, "Actual title is different");
     }
 
-    @Test(dataProvider = "withDropdownNavigationData", dataProviderClass = TestData.class)
+    @Test(dataProvider = "withDropdownNavigationData", dataProviderClass = TestData.class,
+            groups = "smoke")
     @Story("Navigation")
     @Severity(SeverityLevel.CRITICAL)
     @Description("TC_02 Verify the Store navigation menu options via dropdown")
@@ -59,7 +60,8 @@ public class NavigationTest extends BaseTest {
         Assert.assertEquals(actualTitle, expectedTitle, "Actual title is different");
     }
 
-    @Test(dataProvider = "withoutDropdownNavigationData", dataProviderClass = TestData.class)
+    @Test(dataProvider = "withoutDropdownNavigationData", dataProviderClass = TestData.class,
+            groups = "smoke")
     @Story("Navigation")
     @Severity(SeverityLevel.CRITICAL)
     @Description("TC_03 Verify the Store navigation menu options without dropdown")
@@ -78,7 +80,8 @@ public class NavigationTest extends BaseTest {
         Assert.assertEquals(actualTitle, expectedTitle, "Actual title is different");
     }
 
-    @Test(dataProvider = "componentsCategoryNavigationData", dataProviderClass = TestData.class)
+    @Test(dataProvider = "withDropdownNavigationData", dataProviderClass = TestData.class,
+            groups = "smoke")
     @Story("Navigation")
     @Severity(SeverityLevel.CRITICAL)
     @Description("TC_04 Verify the 'Components' category dropdown options navigation")
