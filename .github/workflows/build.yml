@@ -75,7 +75,12 @@ jobs:
 #      run: mvn test -DsuiteFile=testng-firefox.xml
       run: mvn test -Pfirefox
 
-    - name: Cross-browser testing
+    - name: Cross-browser testing for Windows
+      if: ${{ matrix.os == 'windows-latest' }}
+      run: mvn test '-Dsurefire.suiteXmlFiles=xmlSuits/crossBrowser.xml'
+
+    - name: Cross-browser testing for Windows
+      if: ${{ matrix.os == 'ubuntu-latest' || matrix.os == 'macos-13'}}
       run: mvn test -Dsurefire.suiteXmlFiles=xmlSuits/crossBrowser.xml
 
     - name: Test Reporter
