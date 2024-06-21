@@ -30,34 +30,11 @@ public class DriverUtils {
         firefoxOptions.addArguments("--disable-dev-shm-usage");
     }
 
-    private static WebDriver createChromeDriver(WebDriver driver) {
-        if (driver == null) {
-            return new ChromeDriver(chromeOptions);
-        } else {
-            driver.quit();
-            return new ChromeDriver(chromeOptions);
-        }
-    }
-
-    private static WebDriver createFirefoxDriver(WebDriver driver) {
-        if (driver != null) {
-            driver.quit();
-        }
-
-        return new FirefoxDriver(firefoxOptions);
-    }
-
-    public static WebDriver createDriver(String browser, WebDriver driver) {
-        switch (browser) {
-            case "chrome" -> {
-                return createChromeDriver(driver);
-            }
-            case "firefox" -> {
-                return createFirefoxDriver(driver);
-            }
-            default -> {
-                return null;
-            }
-        }
+    public static WebDriver createDriver(String browser) {
+        return switch (browser.toLowerCase()) {
+            case "chrome" -> new ChromeDriver(chromeOptions);
+            case "firefox" -> new FirefoxDriver(firefoxOptions);
+            default -> throw new IllegalArgumentException("Unknown browser: " + browser);
+        };
     }
 }

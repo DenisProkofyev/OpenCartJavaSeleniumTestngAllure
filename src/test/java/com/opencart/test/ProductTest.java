@@ -13,9 +13,9 @@ import org.testng.annotations.Test;
 
 public class ProductTest extends BaseTest {
 
-    @Test
+    @Test(groups = {"smoke", "regression"})
     @Story("Product page")
-    @Severity(SeverityLevel.CRITICAL)
+    @Severity(SeverityLevel.NORMAL)
     @Description("Verify the opened product name")
     public void testProductName() {
 
@@ -29,9 +29,9 @@ public class ProductTest extends BaseTest {
         Assert.assertEquals(actualProductName, "iMac");
     }
 
-    @Test
+    @Test(groups = "regression")
     @Story("Product page")
-    @Severity(SeverityLevel.NORMAL)
+    @Severity(SeverityLevel.MINOR)
     @Description("Verify the opened product breadcrumb path")
     public void testProductPath() {
 

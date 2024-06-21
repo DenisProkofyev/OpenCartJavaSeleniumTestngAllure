@@ -4,7 +4,6 @@ import io.qameta.allure.Step;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
-import org.openqa.selenium.support.ui.ExpectedConditions;
 
 public class ProductPage extends BasePage {
 
@@ -25,7 +24,6 @@ public class ProductPage extends BasePage {
 
     @Step("Get the product breadcrumb path")
     public String getProductBreadCrumbPath() {
-        return getWait5().until(ExpectedConditions.visibilityOf(productBreadcrumbPath)).getText();
+        return productBreadcrumbPath.getText();
     }
-
 }

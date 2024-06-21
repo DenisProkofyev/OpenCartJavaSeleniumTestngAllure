@@ -18,14 +18,26 @@ public class CartPage extends BasePage {
     }
 
     public String getAddedItemName() {
-        getWait2().until(ExpectedConditions.visibilityOf(addedItemName));
+        try {
+            getWait2().until(ExpectedConditions.visibilityOf(addedItemName));
+            return addedItemName.getText();
+        } catch (org.openqa.selenium.UnhandledAlertException e) {
+            handleAlertIfPresent();
 
-        return addedItemName.getText();
+            getWait2().until(ExpectedConditions.visibilityOf(addedItemName));
+            return addedItemName.getText();
+        }
     }
 
     public String getAddedGoodsQuantity() {
-        getWait2().until(ExpectedConditions.visibilityOf(addedItemQuantity));
+        try {
+            getWait2().until(ExpectedConditions.visibilityOf(addedItemQuantity));
+            return addedItemQuantity.getAttribute("value");
+        } catch (org.openqa.selenium.UnhandledAlertException e) {
+            handleAlertIfPresent();
+            getWait2().until(ExpectedConditions.visibilityOf(addedItemQuantity));
 
-        return addedItemQuantity.getAttribute("value");
+            return addedItemQuantity.getAttribute("value");
+        }
     }
 }

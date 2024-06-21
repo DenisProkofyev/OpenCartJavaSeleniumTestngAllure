@@ -12,11 +12,12 @@ import org.testng.annotations.Test;
 
 public class SearchTest extends BaseTest {
 
-    @Test
+    @Test(groups = {"smoke", "regression"})
     @Story("Search field")
     @Severity(SeverityLevel.CRITICAL)
     @Description("Verify the search field visibility")
     public void testSearchFieldVisibility() {
+
         boolean isSearchFieldVisible = new HomePage(getDriver())
                 .isSearchFieldVisible();
 
@@ -24,7 +25,7 @@ public class SearchTest extends BaseTest {
         Assert.assertTrue(isSearchFieldVisible, "The Search field is not visible");
     }
 
-    @Test
+    @Test(groups = "regression")
     @Story("Search field")
     @Severity(SeverityLevel.NORMAL)
     @Description("Verify the search result page heading")
@@ -40,7 +41,7 @@ public class SearchTest extends BaseTest {
         Assert.assertEquals(searchPageHeading, searchValue);
     }
 
-    @Test
+    @Test(groups = "regression")
     @Story("Search field")
     @Severity(SeverityLevel.MINOR)
     @Description("Verify the message when the search term does not match any products")
