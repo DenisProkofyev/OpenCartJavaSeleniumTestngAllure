@@ -27,7 +27,7 @@ public class ProductWithFilesUploadingPage extends ProductPage{
         uploadButton.click();
         uploadFileViaSelenium.sendKeys(file.getAbsolutePath());
 
-        getWait2().until(ExpectedConditions.alertIsPresent());
+        getWait5().until(ExpectedConditions.alertIsPresent());
     }
 
     @Step("Get successfully uploaded file Alert message")
