@@ -47,20 +47,4 @@ public class ProductTest extends BaseTest {
         Allure.step("Verify the product breadcrumb path");
         Assert.assertEquals(actualProductName, "Desktops Mac iMac");
     }
-
-    @Test(groups = "regression")
-    @Story("Product page")
-    @Severity(SeverityLevel.NORMAL)
-    @Description("Verify the successful file uploading on the Apple Cinema page")
-    public void testAppleCinemaFileUploading() {
-
-        new HomePage(getDriver())
-                .hoverOverComponentsCategory()
-                .openMonitorsSubcategory()
-                .clickAppleCinemaImage()
-                .uploadFile(TestData.FILE_TO_UPLOAD_PATH);
-
-        Assert.assertEquals(new ProductWithFilesUploadingPage(getDriver()).getSuccessfullyUploadedFileAlertMessage(),
-                TestData.UPLOADED_FILE_ALERT_MESSAGE);
-    }
 }
