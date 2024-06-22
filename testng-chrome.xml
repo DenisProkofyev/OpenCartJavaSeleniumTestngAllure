@@ -12,6 +12,8 @@
             </class>
             <class name="com.opencart.test.ProductTest">
             </class>
+            <class name="com.opencart.test.LoadingTests">
+            </class>
         </classes>
     </test>
 </suite>

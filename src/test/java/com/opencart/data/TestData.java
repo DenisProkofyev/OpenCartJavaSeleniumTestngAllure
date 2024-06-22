@@ -67,6 +67,9 @@ public class TestData {
     public static final String CAMERAS_URL = BASE_URL + "/index.php?route=product/category&path=33";
     public static final String CAMERAS_PAGE_TITLE = "Cameras";
 
+    public static final String UPLOADED_FILE_ALERT_MESSAGE = "Your file was successfully uploaded!";
+    public static final String FILE_TO_UPLOAD_PATH = "src/test/resources/toTestUploading.txt";
+
     @DataProvider(name = "withDropdownNavigationData")
     public static Object[][] getWithDropdownNavMenuData() {
         return new Object[][] {

@@ -2,7 +2,10 @@ package com.opencart.test;
 
 import com.opencart.base.BaseTest;
 import com.opencart.data.ProductIdData;
+import com.opencart.data.TestData;
+import com.opencart.model.BasePage;
 import com.opencart.model.HomePage;
+import com.opencart.model.ProductWithFilesUploadingPage;
 import io.qameta.allure.Allure;
 import io.qameta.allure.Description;
 import io.qameta.allure.Severity;
@@ -21,7 +24,7 @@ public class ProductTest extends BaseTest {
 
         String actualProductName = new HomePage(getDriver())
                 .hoverOverDesktopsCategory()
-                .openMacSubCategory()
+                .openMacSubcategory()
                 .clickProductImage(ProductIdData.IMAC_ID)
                 .getProductName();
 
@@ -37,7 +40,7 @@ public class ProductTest extends BaseTest {
 
         String actualProductName = new HomePage(getDriver())
                 .hoverOverDesktopsCategory()
-                .openMacSubCategory()
+                .openMacSubcategory()
                 .clickProductImage(ProductIdData.IMAC_ID)
                 .getProductBreadCrumbPath();
 
