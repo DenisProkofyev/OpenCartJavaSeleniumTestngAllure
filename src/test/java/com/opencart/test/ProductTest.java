@@ -3,6 +3,7 @@ package com.opencart.test;
 import com.opencart.base.BaseTest;
 import com.opencart.data.ProductIdData;
 import com.opencart.data.TestData;
+import com.opencart.model.BasePage;
 import com.opencart.model.HomePage;
 import com.opencart.model.ProductWithFilesUploadingPage;
 import io.qameta.allure.Allure;
@@ -61,5 +62,7 @@ public class ProductTest extends BaseTest {
 
         Assert.assertEquals(new ProductWithFilesUploadingPage(getDriver()).getSuccessfullyUploadedFileAlertMessage(),
                 TestData.UPLOADED_FILE_ALERT_MESSAGE);
+
+        new ProductWithFilesUploadingPage(getDriver()).handleAlertIfPresent();
     }
 }
