@@ -62,7 +62,5 @@ public class ProductTest extends BaseTest {
 
         Assert.assertEquals(new ProductWithFilesUploadingPage(getDriver()).getSuccessfullyUploadedFileAlertMessage(),
                 TestData.UPLOADED_FILE_ALERT_MESSAGE);
-
-        new ProductWithFilesUploadingPage(getDriver()).handleAlertIfPresent();
     }
 }

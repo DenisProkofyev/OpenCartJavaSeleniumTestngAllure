@@ -52,6 +52,7 @@ public abstract class BaseTest {
     protected void tearDown(@Optional("chrome") String browser, ITestResult result) {
         WebDriver driver = getDriver();
 
+        TestUtils.handleAlertIfPresent(this);
         Reporter.log(result.getMethod().getMethodName() + ": " + ReportUtils.getTestStatus(result), true);
 
         if (driver != null) {
