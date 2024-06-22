@@ -19,7 +19,7 @@ public abstract class BaseTest {
 
     private final ThreadLocal<WebDriver> threadLocalDriver = new ThreadLocal<>();
 
-    @BeforeSuite()
+    @BeforeSuite(alwaysRun = true)
     protected void setupWebDriverManager() {
         WebDriverManager.chromedriver().setup();
         WebDriverManager.firefoxdriver().setup();
