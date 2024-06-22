@@ -75,7 +75,7 @@ jobs:
 
     - name: Cross-browser testing for Ubuntu
       if: ${{ matrix.os == 'ubuntu-latest' }}
-      run: mvn test -Dsurefire.suiteXmlFiles=xmlSuits/crossBrowser.xml test -Dtest=FrameworkTest
+      run: mvn test -Dsurefire.suiteXmlFiles=xmlSuits/crossBrowser.xml test
 
     - name: Test Reporter
       uses: dorny/test-reporter@v1.9.1
