@@ -20,7 +20,13 @@ public class HomePage extends BasePage {
     private WebElement desktopsLink;
 
     @FindBy(css = "[href$='20_27']")
-    private WebElement macCategoryLink;
+    private WebElement macSubcategoryLink;
+
+    @FindBy(linkText = "Components")
+    private WebElement componentsLink;
+
+    @FindBy(css = "[href$='25_28']")
+    private WebElement monitorsSubcategoryLink;
 
     public HomePage(WebDriver driver) {
         super(driver);
@@ -56,9 +62,23 @@ public class HomePage extends BasePage {
     }
 
     @Step("Open Mac subcategory")
-    public MacSubCategoryPage openMacSubCategory() {
-        macCategoryLink.click();
+    public MacSubcategoryPage openMacSubcategory() {
+        macSubcategoryLink.click();
 
-        return new MacSubCategoryPage(getDriver());
+        return new MacSubcategoryPage(getDriver());
+    }
+
+    @Step("Hover over 'Components' category")
+    public HomePage hoverOverComponentsCategory() {
+        hoverOverElement(componentsLink);
+
+        return this;
+    }
+
+    @Step("Open 'Monitors' subcategory")
+    public MonitorsSubcategoryPage openMonitorsSubcategory() {
+        monitorsSubcategoryLink.click();
+
+        return new MonitorsSubcategoryPage(getDriver());
     }
 }

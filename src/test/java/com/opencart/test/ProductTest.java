@@ -2,7 +2,9 @@ package com.opencart.test;
 
 import com.opencart.base.BaseTest;
 import com.opencart.data.ProductIdData;
+import com.opencart.data.TestData;
 import com.opencart.model.HomePage;
+import com.opencart.model.ProductWithFilesUploadingPage;
 import io.qameta.allure.Allure;
 import io.qameta.allure.Description;
 import io.qameta.allure.Severity;
@@ -21,7 +23,7 @@ public class ProductTest extends BaseTest {
 
         String actualProductName = new HomePage(getDriver())
                 .hoverOverDesktopsCategory()
-                .openMacSubCategory()
+                .openMacSubcategory()
                 .clickProductImage(ProductIdData.IMAC_ID)
                 .getProductName();
 
@@ -37,11 +39,27 @@ public class ProductTest extends BaseTest {
 
         String actualProductName = new HomePage(getDriver())
                 .hoverOverDesktopsCategory()
-                .openMacSubCategory()
+                .openMacSubcategory()
                 .clickProductImage(ProductIdData.IMAC_ID)
                 .getProductBreadCrumbPath();
 
         Allure.step("Verify the product breadcrumb path");
         Assert.assertEquals(actualProductName, "Desktops Mac iMac");
+    }
+
+    @Test(groups = "regression")
+    @Story("Product page")
+    @Severity(SeverityLevel.NORMAL)
+    @Description("Verify the successful file uploading on the Apple Cinema page")
+    public void testAppleCinemaFileUploading() {
+
+        new HomePage(getDriver())
+                .hoverOverComponentsCategory()
+                .openMonitorsSubcategory()
+                .clickAppleCinemaImage()
+                .uploadFile(TestData.FILE_TO_UPLOAD_PATH);
+
+        Assert.assertEquals(new ProductWithFilesUploadingPage(getDriver()).getSuccessfullyUploadedFileAlertMessage(),
+                TestData.UPLOADED_FILE_ALERT_MESSAGE);
     }
 }
