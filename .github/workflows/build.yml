@@ -55,7 +55,7 @@ jobs:
       if: ${{ matrix.os == 'windows-latest' }}
       run: mvn clean -e install '-Dmaven.test.skip=true'
 
-    - name: Test Framework
+    - name: Run Framework test
       run: mvn test -Dtest=FrameworkTest
 
     - name: Run tests with Maven on Windows with Chrome
@@ -78,7 +78,7 @@ jobs:
       if: ${{ matrix.os == 'ubuntu-latest' }}
       run: mvn test -Dsurefire.suiteXmlFiles=xmlSuits/crossBrowser.xml
 
-    - name: Test File loading
+    - name: Run File loading test
       run: mvn test -Dtest=LoadingTest
 
     - name: Test Reporter
