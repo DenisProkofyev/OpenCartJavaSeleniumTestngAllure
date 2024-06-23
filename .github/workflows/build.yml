@@ -69,12 +69,12 @@ jobs:
     - name: Run tests with Maven on Windows and macOS with Chrome
       if: matrix.os == 'windows-latest' || matrix.os == 'macos-13'
 #      matrix.browser == 'chrome' &&
-      run: mvn clean test -Pchrome
+      run: mvn test -Pchrome -Dsurefire.reportNameSuffix=chrome
 
     - name: Run tests with Maven on Windows and macOS with Firefox
       if: matrix.os == 'windows-latest' || matrix.os == 'macos-13'
 #      matrix.browser == 'firefox' &&
-      run: mvn test -Pfirefox
+      run: mvn test -Pfirefox -Dsurefire.reportNameSuffix=firefox
 
     - name: Cross-browser testing for Ubuntu with Chrome and Firefox
       if: ${{ matrix.os == 'ubuntu-latest' }}
