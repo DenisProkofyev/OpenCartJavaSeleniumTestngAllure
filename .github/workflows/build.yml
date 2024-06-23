@@ -19,7 +19,6 @@ jobs:
       max-parallel: 4
       matrix:
         os: [ ubuntu-latest, windows-latest, macos-13 ]
-        browser: [ chrome, firefox ]
     
     runs-on: ${{ matrix.os }}
 
@@ -45,11 +44,8 @@ jobs:
           ${{ runner.os }}-maven-
 
     - name: Install Firefox on MacOS
-      if: matrix.os == 'macos-13' && matrix.browser == 'firefox'
+      if: matrix.os == 'macos-13'
       run: brew install --cask firefox
-        
-#    - name: Build with Maven
-#      run: mvn -B package --file pom.xml
 
     - name: Build with Maven for Ubuntu and macOS
       if: ${{ matrix.os == 'ubuntu-latest' || matrix.os == 'macos-13' }}
@@ -59,23 +55,31 @@ jobs:
       if: ${{ matrix.os == 'windows-latest' }}
       run: mvn clean -e install '-Dmaven.test.skip=true'
 
-#    - name: Test Framework
-#      run: mvn clean test -Dtest=FrameworkTest
+    - name: Run Framework test
+      run: mvn test -Dtest=FrameworkTest
 
-#    - name: Run tests with Maven
-#      run: mvn test -Dbrowser=${{ matrix.browser }}
+    - name: Run tests with Maven on Windows with Firefox
+      if: matrix.os == 'windows-latest'
+      run: mvn test -Pfirefox '-Dsurefire.reportNameSuffix=firefox'
 
-    - name: Run tests with Maven on Windows and macOS with Chrome
-      if: matrix.browser == 'chrome' && matrix.os == 'windows-latest' || matrix.os == 'macos-13'
-      run: mvn clean test -Pchrome
+    - name: Run tests with Maven on macOS with Firefox
+      if: matrix.os == 'macos-13'
+      run: mvn test -Pfirefox -Dsurefire.reportNameSuffix=firefox
 
-    - name: Run tests with Maven on Windows and macOS with Firefox
-      if: matrix.browser == 'firefox' && matrix.os == 'windows-latest' || matrix.os == 'macos-13'
-      run: mvn test -Pfirefox
+    - name: Run tests with Maven on Windows with Chrome
+      if: matrix.os == 'windows-latest'
+      run: mvn test -Pchrome '-Dsurefire.reportNameSuffix=chrome'
 
-    - name: Cross-browser testing for Ubuntu
+    - name: Run tests with Maven on macOS with Chrome
+      if: matrix.os == 'macos-13'
+      run: mvn test -Pchrome -Dsurefire.reportNameSuffix=chrome
+
+    - name: Cross-browser testing for Ubuntu with Chrome and Firefox
       if: ${{ matrix.os == 'ubuntu-latest' }}
       run: mvn test -Dsurefire.suiteXmlFiles=xmlSuits/crossBrowser.xml
+
+    - name: Run File loading test
+      run: mvn test -Dtest=LoadingTest
 
     - name: Test Reporter
       uses: dorny/test-reporter@v1.9.1
