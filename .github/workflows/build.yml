@@ -60,8 +60,8 @@ jobs:
       if: ${{ matrix.os == 'windows-latest' }}
       run: mvn clean -e install '-Dmaven.test.skip=true'
 
-#    - name: Test Framework
-#      run: mvn clean test -Dtest=FrameworkTest
+    - name: Test Framework
+      run: mvn test -Dtest=FrameworkTest
 
 #    - name: Run tests with Maven
 #      run: mvn test -Dbrowser=${{ matrix.browser }}
