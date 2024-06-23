@@ -68,11 +68,11 @@ jobs:
 
     - name: Run tests with Maven on Windows with Firefox
       if: matrix.os == 'windows-latest'
-      run: mvn test -Pfirefox '-Dsurefire.reportNameSuffix=firefox'
+      run: mvn clean test -Pfirefox '-Dsurefire.reportNameSuffix=firefox'
 
     - name: Run tests with Maven on macOS with Firefox
       if: matrix.os == 'macos-13'
-      run: mvn test -Pfirefox -Dsurefire.reportNameSuffix=firefox
+      run: mvn clean test -Pfirefox -Dsurefire.reportNameSuffix=firefox
 
     - name: Cross-browser testing for Ubuntu with Chrome and Firefox
       if: ${{ matrix.os == 'ubuntu-latest' }}

@@ -73,8 +73,6 @@
                         <configuration>
                             <suiteXmlFiles>
                                 <suiteXmlFile>testng-chrome.xml</suiteXmlFile>
-<!--                                <suiteXmlFile>xmlSuits/smoke.xml</suiteXmlFile>-->
-<!--                                <suiteXmlFile>xmlSuits/regression.xml</suiteXmlFile>-->
                             </suiteXmlFiles>
                         </configuration>
                     </plugin>
@@ -112,8 +110,8 @@
                     </argLine>
                     <suiteXmlFiles>
 <!--                        <suiteXmlFile>xmlSuits/crossBrowser.xml</suiteXmlFile>-->
-                        <suiteXmlFile>xmlSuits/smoke.xml</suiteXmlFile>
-                        <suiteXmlFile>xmlSuits/regression.xml</suiteXmlFile>
+<!--                        <suiteXmlFile>xmlSuits/smoke.xml</suiteXmlFile>-->
+<!--                        <suiteXmlFile>xmlSuits/regression.xml</suiteXmlFile>-->
 <!--                        <suiteXmlFile>testng-chrome.xml</suiteXmlFile>-->
 <!--                        <suiteXmlFile>testng-firefox.xml</suiteXmlFile>-->
                     </suiteXmlFiles>
