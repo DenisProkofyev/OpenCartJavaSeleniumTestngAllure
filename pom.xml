@@ -91,8 +91,6 @@
                         <configuration>
                             <suiteXmlFiles>
                                 <suiteXmlFile>testng-firefox.xml</suiteXmlFile>
-                                <suiteXmlFile>xmlSuits/smoke.xml</suiteXmlFile>
-                                <suiteXmlFile>xmlSuits/regression.xml</suiteXmlFile>
                             </suiteXmlFiles>
                         </configuration>
                     </plugin>

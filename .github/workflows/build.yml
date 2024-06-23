@@ -78,6 +78,9 @@ jobs:
       if: ${{ matrix.os == 'ubuntu-latest' }}
       run: mvn test -Dsurefire.suiteXmlFiles=xmlSuits/crossBrowser.xml
 
+    - name: Test File loading
+      run: mvn test -Dtest=LoadingTest
+
     - name: Test Reporter
       uses: dorny/test-reporter@v1.9.1
       if: success() || failure()

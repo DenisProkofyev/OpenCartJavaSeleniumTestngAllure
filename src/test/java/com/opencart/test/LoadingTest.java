@@ -11,7 +11,7 @@ import io.qameta.allure.Story;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
-public class LoadingTests extends BaseTest {
+public class LoadingTest extends BaseTest {
 
     @Test(groups = "regression")
     @Story("Product page")
