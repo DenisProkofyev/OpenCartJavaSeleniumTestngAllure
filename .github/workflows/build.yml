@@ -73,7 +73,7 @@ jobs:
       if: matrix.browser == 'firefox' && matrix.os == 'windows-latest' || matrix.os == 'macos-13'
       run: mvn test -Pfirefox
 
-    - name: Cross-browser testing for Ubuntu
+    - name: Cross-browser testing for Ubuntu with Chrome and Firefox
       if: ${{ matrix.os == 'ubuntu-latest' }}
       run: mvn test -Dsurefire.suiteXmlFiles=xmlSuits/crossBrowser.xml
 
@@ -81,7 +81,7 @@ jobs:
       uses: dorny/test-reporter@v1.9.1
       if: success() || failure()
       with:
-          name: Opencart project test report for ${{ matrix.os }}
+          name: Opencart project test report for ${{ matrix.os }} and ${{ matrix.browser }}
           path: target/surefire-reports/TEST-*.xml
           reporter: java-junit          
 
