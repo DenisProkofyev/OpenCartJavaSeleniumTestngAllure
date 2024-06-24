@@ -44,8 +44,8 @@ OpenCartJavaSeleniumTestngAllure/
 │   │               │   └── ProductTest.java
 │   │               │   └── SearchTest.java
 │   │               ├── utils/
-│   │               │   ├── DriverUtils.java
-│   │               │   ├── ProjectUtils.java
+│   │               │   └── DriverUtils.java
+│   │               │   └── ProjectUtils.java
 │   │               │   └── ReportUtils.java
 │   │               ├── FrameworkTest.java
 ├── target/
