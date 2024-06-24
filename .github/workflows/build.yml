@@ -91,7 +91,7 @@ jobs:
 
     - name: Load Allure test report history
       uses: actions/checkout@v4
-      if: always()
+      if: ${{ matrix.os == 'ubuntu-latest' }}
       continue-on-error: true
       with:
           ref: gh-pages
