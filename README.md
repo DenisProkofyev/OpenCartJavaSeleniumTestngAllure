@@ -1,4 +1,3 @@
-# OpenCartJavaSeleniumTestngAllure
 [![Java CI with Maven](https://github.com/DenisProkofyev/OpenCartJavaSeleniumTestngAllure/actions/workflows/build.yml/badge.svg)](https://github.com/DenisProkofyev/OpenCartJavaSeleniumTestngAllure/actions/workflows/build.yml)
 <!DOCTYPE html>
 <html lang="en">
@@ -6,15 +5,16 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>OpenCart Java Selenium TestNG Allure</title>
 </head>
 
 <body>
   <h1>OpenCart Java Selenium TestNG Allure</h1>
 
   <p>
-        This project is a test automation suite for the OpenCart online shop, utilizing Java, Selenium WebDriver,
-        TestNG, and Allure and Test Reporter for reporting. Tests are executed daily via Jenkins for continuous integration and cross-browser
+        This project is a test automation suite for the OpenCart online shop, utilizing <strong>Java</strong>, <strong>Selenium WebDriver</strong>,
+        <strong>TestNG</strong>, and <strong>Allure</strong> and Test Reporter for reporting. 
+
+Tests are executed daily via <strong>Jenkins</strong> for continuous integration and cross-browser
         compatibility.
   </p>
 
@@ -59,7 +59,7 @@ OpenCartJavaSeleniumTestngAllure/
 <h3>Testing Framework</h3>
 <ul>
 <li>Utilizes the <strong>Page Object Model</strong> (POM) pattern for structured and reusable test code.</li>
-<li>Supports cross-browser testing and multiple operating systems.</li>
+<li>Supports <strong>cross-browser testing</strong> and <strong>multiple operating systems</strong>.</li>
 <li>Data-driven tests with <code>DataProvider</code> for comprehensive test coverage.</li>
 </ul>
 
