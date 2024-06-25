@@ -3,9 +3,7 @@ package com.opencart.test;
 import com.opencart.base.BaseTest;
 import com.opencart.data.ProductIdData;
 import com.opencart.data.TestData;
-import com.opencart.model.BasePage;
 import com.opencart.model.HomePage;
-import com.opencart.model.ProductWithFilesUploadingPage;
 import io.qameta.allure.Allure;
 import io.qameta.allure.Description;
 import io.qameta.allure.Severity;
@@ -46,5 +44,21 @@ public class ProductTest extends BaseTest {
 
         Allure.step("Verify the product breadcrumb path");
         Assert.assertEquals(actualProductName, "Desktops Mac iMac");
+    }
+
+    @Test(groups = "regression")
+    @Story("Product page")
+    @Severity(SeverityLevel.MINOR)
+    @Description("Verify the Apple Cinema minimal quantity warning message")
+    public void testAppleCinemaWarningMessage() {
+
+        String actualAppleCinemaWarningMessage = new HomePage(getDriver())
+                .hoverOverComponentsCategory()
+                .openMonitorsSubcategory()
+                .clickAppleCinemaImage()
+                .getMinimumAppleCinemaQuantityMessage();
+
+        Allure.step("Verify the Apple Cinema minimal quantity warning message");
+        Assert.assertEquals(actualAppleCinemaWarningMessage, TestData.APPLE_CINEMA_QUANTITY_MESSAGE);
     }
 }

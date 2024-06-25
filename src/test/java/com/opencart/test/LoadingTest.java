@@ -3,7 +3,7 @@ package com.opencart.test;
 import com.opencart.base.BaseTest;
 import com.opencart.data.TestData;
 import com.opencart.model.HomePage;
-import com.opencart.model.ProductWithFilesUploadingPage;
+import com.opencart.model.ProductAppleCinemaPage;
 import io.qameta.allure.Description;
 import io.qameta.allure.Severity;
 import io.qameta.allure.SeverityLevel;
@@ -25,7 +25,7 @@ public class LoadingTest extends BaseTest {
                 .clickAppleCinemaImage()
                 .uploadFile(TestData.FILE_TO_UPLOAD_PATH);
 
-        Assert.assertEquals(new ProductWithFilesUploadingPage(getDriver()).getSuccessfullyUploadedFileAlertMessage(),
+        Assert.assertEquals(new ProductAppleCinemaPage(getDriver()).getSuccessfullyUploadedFileAlertMessage(),
                 TestData.UPLOADED_FILE_ALERT_MESSAGE);
     }
 }

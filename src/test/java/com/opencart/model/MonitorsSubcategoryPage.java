@@ -15,9 +15,9 @@ public class MonitorsSubcategoryPage extends BaseCategoryPage {
     }
 
     @Step("Click on the Apple Cinema image")
-    public ProductWithFilesUploadingPage clickAppleCinemaImage() {
+    public ProductAppleCinemaPage clickAppleCinemaImage() {
         appleCinema.click();
 
-        return new ProductWithFilesUploadingPage(getDriver());
+        return new ProductAppleCinemaPage(getDriver());
     }
 }

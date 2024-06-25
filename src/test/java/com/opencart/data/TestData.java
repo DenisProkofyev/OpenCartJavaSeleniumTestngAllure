@@ -70,6 +70,8 @@ public class TestData {
     public static final String UPLOADED_FILE_ALERT_MESSAGE = "Your file was successfully uploaded!";
     public static final String FILE_TO_UPLOAD_PATH = "src/test/resources/toTestUploading.txt";
 
+    public static final String APPLE_CINEMA_QUANTITY_MESSAGE = "This product has a minimum quantity of 2";
+
     @DataProvider(name = "withDropdownNavigationData")
     public static Object[][] getWithDropdownNavMenuData() {
         return new Object[][] {

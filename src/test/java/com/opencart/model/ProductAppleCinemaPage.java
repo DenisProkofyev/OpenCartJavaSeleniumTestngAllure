@@ -8,7 +8,7 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 
 import java.io.File;
 
-public class ProductWithFilesUploadingPage extends ProductPage{
+public class ProductAppleCinemaPage extends ProductPage{
 
     @FindBy(id = "button-upload222")
     private WebElement uploadButton;
@@ -16,7 +16,10 @@ public class ProductWithFilesUploadingPage extends ProductPage{
     @FindBy(css = "#form-upload input[type='file']")
     private WebElement uploadFileViaSelenium;
 
-    public ProductWithFilesUploadingPage(WebDriver driver) {
+    @FindBy(className = "alert-info")
+    private WebElement minimumProductQuantityMessage;
+
+    public ProductAppleCinemaPage(WebDriver driver) {
         super(driver);
     }
 
@@ -33,5 +36,10 @@ public class ProductWithFilesUploadingPage extends ProductPage{
     @Step("Get successfully uploaded file Alert message")
     public String getSuccessfullyUploadedFileAlertMessage() {
         return getDriver().switchTo().alert().getText();
+    }
+
+    @Step("Get minimum Apple Cinema quantity message text")
+    public String getMinimumAppleCinemaQuantityMessage() {
+        return minimumProductQuantityMessage.getText();
     }
 }

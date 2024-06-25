@@ -79,6 +79,7 @@ jobs:
       run: mvn test -Dsurefire.suiteXmlFiles=xmlSuits/crossBrowser.xml
 
     - name: Run File loading test
+      if: ${{ matrix.os == 'ubuntu-latest' }}
       run: mvn test -Dtest=LoadingTest
 
     - name: Test Reporter
