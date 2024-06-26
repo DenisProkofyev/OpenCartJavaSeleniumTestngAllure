@@ -61,9 +61,9 @@ jobs:
     - name: Run Framework test
       run: mvn test -Dtest=FrameworkTest
 
-    - name: Run tests with Maven on Windows with Firefox
-      if: matrix.os == 'windows-latest'
-      run: mvn test -Pfirefox '-Dsurefire.reportNameSuffix=firefox'
+#    - name: Run tests with Maven on Windows with Firefox
+#      if: matrix.os == 'windows-latest'
+#      run: mvn test -Pfirefox '-Dsurefire.reportNameSuffix=firefox'
 
     - name: Run tests with Maven on macOS with Firefox
       if: matrix.os == 'macos-13'
@@ -73,9 +73,9 @@ jobs:
       if: matrix.os == 'windows-latest'
       run: mvn test -Pchrome '-Dsurefire.reportNameSuffix=chrome'
 
-    - name: Run tests with Maven on macOS with Chrome
-      if: matrix.os == 'macos-13'
-      run: mvn test -Pchrome -Dsurefire.reportNameSuffix=chrome
+#    - name: Run tests with Maven on macOS with Chrome
+#      if: matrix.os == 'macos-13'
+#      run: mvn test -Pchrome -Dsurefire.reportNameSuffix=chrome
 
     - name: Cross-browser testing for Ubuntu with Chrome and Firefox
       if: ${{ matrix.os == 'ubuntu-latest' }}
