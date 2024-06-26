@@ -21,7 +21,7 @@ public class TestData {
     public static final String ALL_LAPTOPS_NOTEBOOKS_PAGE_TITLE = "Laptops & Notebooks";
 
     // Components category
-    public static final By COMPONENTS_MENU = By.xpath("//li/a[text()='Component']");
+    public static final By COMPONENTS_MENU = By.xpath("//li/a[text()='Components']");
     public static final By ALL_COMPONENTS_DROPDOWN_MENU = By.xpath("//li//a[text()='Show All Components']");
     public static final String ALL_COMPONENTS_URL = BASE_URL + "/index.php?route=product/category&path=25";
     public static final String ALL_COMPONENTS_PAGE_TITLE = "Components";
