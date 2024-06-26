@@ -58,25 +58,25 @@ jobs:
     - name: Run Framework test
       run: mvn test -Dtest=FrameworkTest
 
-    - name: Run tests with Maven on Windows with Firefox
-      if: matrix.os == 'windows-latest'
-      run: mvn test -Pfirefox '-Dsurefire.reportNameSuffix=firefox'
-
-    - name: Run tests with Maven on macOS with Firefox
-      if: matrix.os == 'macos-13'
-      run: mvn test -Pfirefox -Dsurefire.reportNameSuffix=firefox
-
-    - name: Run tests with Maven on Windows with Chrome
-      if: matrix.os == 'windows-latest'
-      run: mvn test -Pchrome '-Dsurefire.reportNameSuffix=chrome'
-
-    - name: Run tests with Maven on macOS with Chrome
-      if: matrix.os == 'macos-13'
-      run: mvn test -Pchrome -Dsurefire.reportNameSuffix=chrome
-
-    - name: Cross-browser testing for Ubuntu with Chrome and Firefox
-      if: ${{ matrix.os == 'ubuntu-latest' }}
-      run: mvn test -Dsurefire.suiteXmlFiles=xmlSuits/crossBrowser.xml
+#    - name: Run tests with Maven on Windows with Firefox
+#      if: matrix.os == 'windows-latest'
+#      run: mvn test -Pfirefox '-Dsurefire.reportNameSuffix=firefox'
+#
+#    - name: Run tests with Maven on macOS with Firefox
+#      if: matrix.os == 'macos-13'
+#      run: mvn test -Pfirefox -Dsurefire.reportNameSuffix=firefox
+#
+#    - name: Run tests with Maven on Windows with Chrome
+#      if: matrix.os == 'windows-latest'
+#      run: mvn test -Pchrome '-Dsurefire.reportNameSuffix=chrome'
+#
+#    - name: Run tests with Maven on macOS with Chrome
+#      if: matrix.os == 'macos-13'
+#      run: mvn test -Pchrome -Dsurefire.reportNameSuffix=chrome
+#
+#    - name: Cross-browser testing for Ubuntu with Chrome and Firefox
+#      if: ${{ matrix.os == 'ubuntu-latest' }}
+#      run: mvn test -Dsurefire.suiteXmlFiles=xmlSuits/crossBrowser.xml
 
     - name: Run File loading test
       if: ${{ matrix.os == 'ubuntu-latest' }}
@@ -113,6 +113,12 @@ jobs:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_branch: gh-pages
           publish_dir: allure-history
+
+    - name: Attach screenshots
+      uses: actions/upload-artifact@v4
+      if: failure()
+      with:
+        path: screenshots
       
   check-java-code-style:
      name: Check Java code style

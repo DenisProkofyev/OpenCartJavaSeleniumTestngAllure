@@ -64,6 +64,10 @@ public abstract class BaseTest {
             Reporter.log("INFO: Driver is null", true);
         }
 
+        if (!result.isSuccess() && ProjectUtils.isServerRun()) {
+            ProjectUtils.takeScreenshot(getDriver(), result);
+        }
+
         ProjectUtils.logf("Execution time is %d sec\n", (result.getEndMillis() - result.getStartMillis()) / 1000);
     }
 
