@@ -61,56 +61,29 @@ jobs:
     - name: Run Framework test
       run: mvn test -Dtest=FrameworkTest
 
-#    - name: Run tests with Maven on Windows with Firefox
-#      if: matrix.os == 'windows-latest'
-#      run: mvn test -Pfirefox '-Dsurefire.reportNameSuffix=firefox'
-#
-#    - name: Run tests with Maven on macOS with Firefox
-#      if: matrix.os == 'macos-13'
-#      run: mvn test -Pfirefox -Dsurefire.reportNameSuffix=firefox
-#
-#    - name: Run tests with Maven on Windows with Chrome
-#      if: matrix.os == 'windows-latest'
-#      run: mvn test -Pchrome '-Dsurefire.reportNameSuffix=chrome'
-#
-#    - name: Run tests with Maven on macOS with Chrome
-#      if: matrix.os == 'macos-13'
-#      run: mvn test -Pchrome -Dsurefire.reportNameSuffix=chrome
-#
-#    - name: Cross-browser testing for Ubuntu with Chrome and Firefox
-#      if: ${{ matrix.os == 'ubuntu-latest' }}
-#      run: mvn test -Dsurefire.suiteXmlFiles=xmlSuits/crossBrowser.xml
+    - name: Run tests with Maven on Windows with Firefox
+      if: matrix.os == 'windows-latest'
+      run: mvn test -Pfirefox '-Dsurefire.reportNameSuffix=firefox'
+
+    - name: Run tests with Maven on macOS with Firefox
+      if: matrix.os == 'macos-13'
+      run: mvn test -Pfirefox -Dsurefire.reportNameSuffix=firefox
+
+    - name: Run tests with Maven on Windows with Chrome
+      if: matrix.os == 'windows-latest'
+      run: mvn test -Pchrome '-Dsurefire.reportNameSuffix=chrome'
+
+    - name: Run tests with Maven on macOS with Chrome
+      if: matrix.os == 'macos-13'
+      run: mvn test -Pchrome -Dsurefire.reportNameSuffix=chrome
+
+    - name: Cross-browser testing for Ubuntu with Chrome and Firefox
+      if: ${{ matrix.os == 'ubuntu-latest' }}
+      run: mvn test -Dsurefire.suiteXmlFiles=xmlSuits/crossBrowser.xml
 
     - name: Run File loading test
-#      if: ${{ matrix.os == 'ubuntu-latest' }}
+      if: ${{ matrix.os == 'ubuntu-latest' }}
       run: mvn test -Dtest=LoadingTest
-
-    - name: Attach screenshots (Ubuntu)
-      uses: actions/upload-artifact@v4
-      if: ${{ matrix.os == 'ubuntu-latest' }} && fail()
-      with:
-        name: screenshots-ubuntu
-        path: screenshots
-
-    - name: Attach screenshots (Windows)
-      uses: actions/upload-artifact@v4
-      if: ${{ matrix.os == 'windows-latest' }}
-      with:
-        name: screenshots-windows
-        path: screenshots
-
-    - name: Attach screenshots (macOS)
-      uses: actions/upload-artifact@v4
-      if: ${{ matrix.os == 'macos-13' }}
-      with:
-        name: screenshots-macos
-        path: screenshots
-
-    - name: Attach screenshots
-      uses: actions/upload-artifact@v4
-      if: always()
-      with:
-        path: screenshots
 
     - name: Test Reporter
       uses: dorny/test-reporter@v1.9.1
@@ -143,6 +116,12 @@ jobs:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_branch: gh-pages
           publish_dir: allure-history
+
+    - name: Attach screenshots
+      uses: actions/upload-artifact@v4
+      if: always()
+      with:
+        path: screenshots
 
   check-java-code-style:
      name: Check Java code style

@@ -22,7 +22,7 @@ public class HomePage extends BasePage {
     @FindBy(css = "[href$='20_27']")
     private WebElement macSubcategoryLink;
 
-    @FindBy(linkText = "Component")
+    @FindBy(linkText = "Components")
     private WebElement componentsLink;
 
     @FindBy(css = "[href$='25_28']")
