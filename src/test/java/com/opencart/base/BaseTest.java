@@ -54,6 +54,10 @@ public abstract class BaseTest {
 
         Reporter.log(result.getMethod().getMethodName() + ": " + ReportUtils.getTestStatus(result), true);
 
+        if (!result.isSuccess() && ProjectUtils.isServerRun()) {
+            ProjectUtils.takeScreenshot(getDriver(), result);
+        }
+
         if (driver != null) {
             driver.quit();
             Reporter.log("INFO: " + browser.substring(0, 1).toUpperCase() + browser.substring(1) +
@@ -67,7 +71,7 @@ public abstract class BaseTest {
         ProjectUtils.logf("Execution time is %d sec\n", (result.getEndMillis() - result.getStartMillis()) / 1000);
     }
 
-    protected WebDriver getDriver() {
+    public WebDriver getDriver() {
         return threadLocalDriver.get();
     }
 }
