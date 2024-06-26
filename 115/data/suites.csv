@@ -1,0 +1,4 @@
+"Status","Start Time","Stop Time","Duration in ms","Parent Suite","Suite","Sub Suite","Test Class","Test Method","Name","Description"
+"passed","Wed Jun 26 19:16:00 GMT 2024","Wed Jun 26 19:16:00 GMT 2024","10","Surefire suite","Surefire test","FrameworkTest","FrameworkTest","testFramework","testFramework",""
+"unknown","Wed Jun 26 19:16:00 GMT 2024","Wed Jun 26 19:16:00 GMT 2024","2","Surefire suite","Surefire test","FrameworkTest","FrameworkTest","testIgnoredTest","testIgnoredTest",""
+"passed","Wed Jun 26 19:16:09 GMT 2024","Wed Jun 26 19:16:12 GMT 2024","2971","Surefire suite","Surefire test","com.opencart.test.LoadingTest","com.opencart.test.LoadingTest","testAppleCinemaFileUploading","testAppleCinemaFileUploading","Verify the successful file uploading on the Apple Cinema page"
