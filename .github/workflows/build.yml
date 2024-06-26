@@ -82,6 +82,12 @@ jobs:
       if: ${{ matrix.os == 'ubuntu-latest' }}
       run: mvn test -Dtest=LoadingTest
 
+    - name: Attach screenshots
+      uses: actions/upload-artifact@v4
+      if: failure()
+      with:
+        path: screenshots
+
     - name: Test Reporter
       uses: dorny/test-reporter@v1.9.1
       if: success() || failure()
@@ -113,12 +119,6 @@ jobs:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_branch: gh-pages
           publish_dir: allure-history
-
-    - name: Attach screenshots
-      uses: actions/upload-artifact@v4
-      if: failure()
-      with:
-        path: screenshots
       
   check-java-code-style:
      name: Check Java code style
