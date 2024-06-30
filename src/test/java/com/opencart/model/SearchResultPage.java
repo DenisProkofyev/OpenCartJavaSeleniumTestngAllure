@@ -1,10 +1,11 @@
 package com.opencart.model;
 
+import com.opencart.model.base.BasePage;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
-public class SearchResultPage extends BasePage {
+public class SearchResultPage extends BasePage<SearchResultPage> {
 
     @FindBy(tagName = "h1")
     private WebElement pageHeading;

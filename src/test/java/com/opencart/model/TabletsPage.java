@@ -1,20 +1,18 @@
 package com.opencart.model;
 
+import com.opencart.model.base.BasePage;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 
-public class TabletsPage extends BasePage{
+public class TabletsPage extends BasePage<TabletsPage> {
 
     @FindBy(css = "[onclick^=\"cart.add('49', '1')\"]")
     private WebElement addTabletToCartButton;
 
     @FindBy(css = "#cart button[data-toggle='dropdown']")
     private WebElement cartPreviewButton;
-
-    @FindBy(css = "[title='Shopping Cart']")
-    private WebElement cartButton;
 
     @FindBy(css = ".table-striped [class$='left'] [href*='product_id']")
     private WebElement cartPreviewAddedItemName;
@@ -40,12 +38,6 @@ public class TabletsPage extends BasePage{
         cartPreviewButton.click();
 
         return this;
-    }
-
-    public CartPage clickCartButton() {
-        cartButton.click();
-
-        return new CartPage(getDriver());
     }
 
     public String getCartPreviewAddedItemName() {

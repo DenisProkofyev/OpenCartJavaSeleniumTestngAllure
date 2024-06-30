@@ -1,11 +1,12 @@
 package com.opencart.model;
 
+import com.opencart.model.base.BasePage;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 
-public class CartPage extends BasePage {
+public class CartPage extends BasePage<CartPage> {
 
     @FindBy(css = ".table-bordered [class$='left'] [href*='product_id']")
     private WebElement addedItemName;

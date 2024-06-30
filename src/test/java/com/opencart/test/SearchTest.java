@@ -19,7 +19,7 @@ public class SearchTest extends BaseTest {
     public void testSearchFieldVisibility() {
 
         boolean isSearchFieldVisible = new HomePage(getDriver())
-                .isSearchFieldVisible();
+                .getHeader().isSearchFieldVisible();
 
         Allure.step("Verify the Search field is visible");
         Assert.assertTrue(isSearchFieldVisible, "The Search field is not visible");
@@ -33,7 +33,7 @@ public class SearchTest extends BaseTest {
         final String searchValue = "Samsung";
 
         String searchPageHeading = new HomePage(getDriver())
-                .typeInSearchValue(searchValue)
+                .getHeader().typeInSearchValue(searchValue)
                 .clickSearchButton()
                 .getPageHeading();
 
@@ -50,7 +50,7 @@ public class SearchTest extends BaseTest {
         final String expectedNoSearchResultMessage = "There is no product that matches the search criteria.";
 
         String actualNoSearchResultMessage = new HomePage(getDriver())
-                .typeInSearchValue(searchValue)
+                .getHeader().typeInSearchValue(searchValue)
                 .clickSearchButton()
                 .getNoResultsMessage();
 

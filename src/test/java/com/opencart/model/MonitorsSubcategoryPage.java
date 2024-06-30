@@ -1,5 +1,6 @@
 package com.opencart.model;
 
+import com.opencart.model.base.BaseCategoryPage;
 import io.qameta.allure.Step;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
