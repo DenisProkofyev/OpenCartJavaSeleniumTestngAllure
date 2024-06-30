@@ -19,7 +19,7 @@ public class CartTest extends BaseTest {
         final String expectedItemName = "Samsung Galaxy Tab 10.1";
 
         String actualAddedItemName = new HomePage(getDriver())
-                .openTabletsCategory()
+                .getTopMenu().openTabletsCategory()
                 .addTabletToCart()
                 .clickPreviewCartButton()
                 .getCartPreviewAddedItemName();
@@ -34,7 +34,7 @@ public class CartTest extends BaseTest {
     public void testAddedItemQuantityViaCartPreview() {
 
         String actualAddedItemQuantity = new HomePage(getDriver())
-                .openTabletsCategory()
+                .getTopMenu().openTabletsCategory()
                 .addTabletToCart()
                 .clickPreviewCartButton()
                 .getCartPreviewAddedItemQuantity();
@@ -50,9 +50,9 @@ public class CartTest extends BaseTest {
         final String expectedItemName = "Samsung Galaxy Tab 10.1";
 
         String actualAddedItemName = new HomePage(getDriver())
-                .openTabletsCategory()
+                .getTopMenu().openTabletsCategory()
                 .addTabletToCart()
-                .clickCartButton()
+                .getHeader().clickCartButton()
                 .getAddedItemName();
 
         Assert.assertEquals(actualAddedItemName, expectedItemName);
@@ -65,9 +65,9 @@ public class CartTest extends BaseTest {
     public void testAddedItemQuantityViaCart() {
 
         String actualAddedItemQuantity = new HomePage(getDriver())
-                .openTabletsCategory()
+                .getTopMenu().openTabletsCategory()
                 .addTabletToCart()
-                .clickCartButton()
+                .getHeader().clickCartButton()
                 .getAddedGoodsQuantity();
 
         Assert.assertEquals(actualAddedItemQuantity, "1");

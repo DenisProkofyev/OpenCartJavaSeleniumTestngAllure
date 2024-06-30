@@ -20,8 +20,8 @@ public class LoadingTest extends BaseTest {
     public void testAppleCinemaFileUploading() {
 
         new HomePage(getDriver())
-                .hoverOverComponentsCategory()
-                .openMonitorsSubcategory()
+                .getTopMenu().hoverOverComponentsCategory()
+                .getTopMenu().openMonitorsSubcategory()
                 .clickAppleCinemaImage()
                 .uploadFile(TestData.FILE_TO_UPLOAD_PATH);
 

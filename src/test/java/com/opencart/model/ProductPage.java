@@ -1,11 +1,12 @@
 package com.opencart.model;
 
+import com.opencart.model.base.BasePage;
 import io.qameta.allure.Step;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
-public class ProductPage extends BasePage {
+public class ProductPage extends BasePage<ProductPage> {
 
     @FindBy(tagName = "h1")
     private WebElement productName;

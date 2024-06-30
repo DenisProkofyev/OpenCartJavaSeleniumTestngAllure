@@ -1,10 +1,11 @@
-package com.opencart.model;
+package com.opencart.model.base;
 
+import com.opencart.model.ProductPage;
 import io.qameta.allure.Step;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
-public class BaseCategoryPage extends BasePage {
+public class BaseCategoryPage extends BasePage<BaseCategoryPage> {
 
     public BaseCategoryPage(WebDriver driver) {
         super(driver);

@@ -21,8 +21,8 @@ public class ProductTest extends BaseTest {
     public void testProductName() {
 
         String actualProductName = new HomePage(getDriver())
-                .hoverOverDesktopsCategory()
-                .openMacSubcategory()
+                .getTopMenu().hoverOverDesktopsCategory()
+                .getTopMenu().openMacSubcategory()
                 .clickProductImage(ProductIdData.IMAC_ID)
                 .getProductName();
 
@@ -37,8 +37,8 @@ public class ProductTest extends BaseTest {
     public void testProductPath() {
 
         String actualProductName = new HomePage(getDriver())
-                .hoverOverDesktopsCategory()
-                .openMacSubcategory()
+                .getTopMenu().hoverOverDesktopsCategory()
+                .getTopMenu().openMacSubcategory()
                 .clickProductImage(ProductIdData.IMAC_ID)
                 .getProductBreadCrumbPath();
 
@@ -53,8 +53,8 @@ public class ProductTest extends BaseTest {
     public void testAppleCinemaWarningMessage() {
 
         String actualAppleCinemaWarningMessage = new HomePage(getDriver())
-                .hoverOverComponentsCategory()
-                .openMonitorsSubcategory()
+                .getTopMenu().hoverOverComponentsCategory()
+                .getTopMenu().openMonitorsSubcategory()
                 .clickAppleCinemaImage()
                 .getMinimumAppleCinemaQuantityMessage();
 
