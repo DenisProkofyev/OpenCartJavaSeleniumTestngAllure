@@ -72,6 +72,10 @@ public class TestData {
 
     public static final String APPLE_CINEMA_QUANTITY_MESSAGE = "This product has a minimum quantity of 2";
 
+    // login data
+    public static final String EMAIL = "jahoba4756@kinsef.com";
+    public static final String PASSWORD = "TestPassword";
+
     @DataProvider(name = "withDropdownNavigationData")
     public static Object[][] getWithDropdownNavMenuData() {
         return new Object[][] {
