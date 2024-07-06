@@ -115,13 +115,13 @@ jobs:
           path: target/surefire-reports/TEST-*.xml
           reporter: java-junit
 
-    - name: Merge Allure results
-      if: ${{ matrix.os == 'ubuntu-latest' }}
-      run: |
-          mkdir -p target/allure-results
-          cp -r target/allure-results/crossBrowser/* target/allure-results/
-          cp -r target/allure-results/smoke/* target/allure-results/
-          cp -r target/allure-results/regression/* target/allure-results/
+#    - name: Merge Allure results
+#      if: ${{ matrix.os == 'ubuntu-latest' }}
+#      run: |
+#          mkdir -p target/allure-results
+#          cp -r target/allure-results/crossBrowser/* target/allure-results/
+#          cp -r target/allure-results/smoke/* target/allure-results/
+#          cp -r target/allure-results/regression/* target/allure-results/
 
     - name: Load Allure test report history
       uses: actions/checkout@v4
