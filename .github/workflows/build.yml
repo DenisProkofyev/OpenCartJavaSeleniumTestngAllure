@@ -80,17 +80,16 @@ jobs:
     - name: Cross-browser, smoke and regression testing for Ubuntu with Chrome and Firefox
       if: ${{ matrix.os == 'ubuntu-latest' }}
       run: |
-        mvn test -Dsurefire.suiteXmlFiles=xmlSuits/crossBrowser.xml || true
-        mvn test -Dsurefire.suiteXmlFiles=xmlSuits/smoke.xml || true
-        mvn test -Dsurefire.suiteXmlFiles=xmlSuits/regression.xml || true
+        mvn test -Dsurefire.suiteXmlFiles=xmlSuits/crossBrowser.xml -Dallure.results.directory=target/allure-results/crossBrowser || true
 
-#    - name: Smoke testing for Ubuntu with Chrome and Firefox
-#      if: ${{ matrix.os == 'ubuntu-latest' }}
-#      run: mvn test -Dsurefire.suiteXmlFiles=xmlSuits/smoke.xml
-#
-#    - name: Regression testing for Ubuntu with Chrome and Firefox
-#      if: ${{ matrix.os == 'ubuntu-latest' }}
-#      run: mvn test -Dsurefire.suiteXmlFiles=xmlSuits/regression.xml
+    - name: Smoke testing for Ubuntu with Chrome and Firefox
+      if: ${{ matrix.os == 'ubuntu-latest' }}
+      run: | 
+        mvn test -Dsurefire.suiteXmlFiles=xmlSuits/smoke.xml -Dallure.results.directory=target/allure-results/smoke || true
+
+    - name: Regression testing for Ubuntu with Chrome and Firefox
+      if: ${{ matrix.os == 'ubuntu-latest' }}
+      run: mvn test -Dsurefire.suiteXmlFiles=xmlSuits/regression.xml -Dallure.results.directory=target/allure-results/regression || true
 
     - name: Run File loading test
       if: ${{ matrix.os == 'ubuntu-latest' }}
@@ -103,6 +102,14 @@ jobs:
           name: Opencart project test report for ${{ matrix.os }}
           path: target/surefire-reports/TEST-*.xml
           reporter: java-junit
+
+    - name: Merge Allure results
+      if: ${{ matrix.os == 'ubuntu-latest' }}
+      run: |
+          mkdir -p target/allure-results
+          cp -r target/allure-results/crossBrowser/* target/allure-results/
+          cp -r target/allure-results/smoke/* target/allure-results/
+          cp -r target/allure-results/regression/* target/allure-results/
 
     - name: Load Allure test report history
       uses: actions/checkout@v4
