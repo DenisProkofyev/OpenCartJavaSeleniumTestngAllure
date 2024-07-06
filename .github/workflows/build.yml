@@ -81,6 +81,14 @@ jobs:
       if: ${{ matrix.os == 'ubuntu-latest' }}
       run: mvn test -Dsurefire.suiteXmlFiles=xmlSuits/crossBrowser.xml
 
+    - name: Smoke testing for Ubuntu with Chrome and Firefox
+      if: ${{ matrix.os == 'ubuntu-latest' }}
+      run: mvn test -Dsurefire.suiteXmlFiles=xmlSuits/smoke.xml
+
+    - name: Regression testing for Ubuntu with Chrome and Firefox
+      if: ${{ matrix.os == 'ubuntu-latest' }}
+      run: mvn test -Dsurefire.suiteXmlFiles=xmlSuits/regression.xml
+
     - name: Run File loading test
       if: ${{ matrix.os == 'ubuntu-latest' }}
       run: mvn test -Dtest=LoadingTest

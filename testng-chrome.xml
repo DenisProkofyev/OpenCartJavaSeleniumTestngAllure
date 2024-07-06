@@ -1,19 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd" >
-<suite name="Chrome Test Suite" parallel="methods" thread-count="4" data-provider-thread-count="2">
+<suite name="Chrome Test Suite" parallel="methods" thread-count="4" data-provider-thread-count="4">
     <test name = "ChromeTest" verbose="2">
         <parameter name="browser" value="chrome" />
         <classes>
-            <class name="com.opencart.test.NavigationTest">
-            </class>
-            <class name="com.opencart.test.SearchTest">
-            </class>
-            <class name="com.opencart.test.CartTest">
-            </class>
-            <class name="com.opencart.test.ProductTest">
-            </class>
-            <class name="com.opencart.test.LoadingTest">
-            </class>
+            <class name="com.opencart.test.NavigationTest"/>
+            <class name="com.opencart.test.SearchTest"/>
+            <class name="com.opencart.test.CartTest"/>
+            <class name="com.opencart.test.ProductTest"/>
+            <class name="com.opencart.test.LoginTest"/>
         </classes>
     </test>
 </suite>

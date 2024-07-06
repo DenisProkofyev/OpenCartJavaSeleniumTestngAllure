@@ -3,6 +3,8 @@ package com.opencart.data;
 import org.openqa.selenium.By;
 import org.testng.annotations.DataProvider;
 
+import java.util.List;
+
 public class TestData {
 
     public static final String BASE_URL = "https://naveenautomationlabs.com/opencart";
@@ -75,6 +77,10 @@ public class TestData {
     // login data
     public static final String EMAIL = "jahoba4756@kinsef.com";
     public static final String PASSWORD = "TestPassword";
+
+    public static final List<String> expectedLoginSidebarOptionsList = List.of("Login", "Register", "Forgotten Password",
+            "My Account", "Address Book", "Wish List", "Order History", "Downloads", "Recurring payments",
+            "Reward Points", "Returns", "Transactions", "Newsletter");
 
     @DataProvider(name = "withDropdownNavigationData")
     public static Object[][] getWithDropdownNavMenuData() {
