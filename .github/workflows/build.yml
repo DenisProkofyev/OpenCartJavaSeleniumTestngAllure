@@ -81,10 +81,6 @@ jobs:
 #      if: ${{ matrix.os == 'ubuntu-latest' }}
 #      run: mvn test -Dsurefire.suiteXmlFiles=xmlSuits/crossBrowser.xml
 
-    - name: Run cross-browser testing on Ubuntu with Chrome and Firefox
-      if: ${{ matrix.os == 'ubuntu-latest' }}
-      run: mvn test -PcrossBrowser
-
     - name: Run 'Smoke' group tests on Ubuntu
       if: ${{ matrix.os == 'ubuntu-latest' }}
       run: mvn test -Psmoke
@@ -92,6 +88,10 @@ jobs:
     - name: Run 'Regression' group tests on Ubuntu
       if: ${{ matrix.os == 'ubuntu-latest' }}
       run: mvn test -Pregression
+
+    - name: Run cross-browser testing on Ubuntu with Chrome and Firefox
+      if: ${{ matrix.os == 'ubuntu-latest' }}
+      run: mvn test -PcrossBrowser
 
 #    - name: Cross-browser, smoke and regression testing for Ubuntu with Chrome and Firefox
 #      if: ${{ matrix.os == 'ubuntu-latest' }}
