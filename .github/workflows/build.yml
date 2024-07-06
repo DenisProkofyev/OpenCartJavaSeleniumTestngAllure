@@ -44,7 +44,7 @@ jobs:
           ${{ runner.os }}-maven-
 
     - name: Install Firefox on MacOS
-      if: matrix.os == 'macos-13'
+      if: ${{ matrix.os == 'macos-13' }}
       run: brew install --cask firefox
 
     - name: Build with Maven for Ubuntu and macOS
@@ -62,31 +62,31 @@ jobs:
       run: mvn test -Dtest=FrameworkTest
 
     - name: Run tests with Maven on Windows with Firefox
-      if: matrix.os == 'windows-latest'
+      if: ${{ matrix.os == 'windows-latest' }}
       run: mvn test -Pfirefox '-Dsurefire.reportNameSuffix=firefox'
 
     - name: Run tests with Maven on macOS with Firefox
-      if: matrix.os == 'macos-13'
+      if: ${{ matrix.os == 'macos-13' }}
       run: mvn test -Pfirefox -Dsurefire.reportNameSuffix=firefox
 
     - name: Run tests with Maven on Windows with Chrome
-      if: matrix.os == 'windows-latest'
+      if: ${{ matrix.os == 'windows-latest' }}
       run: mvn test -Pchrome '-Dsurefire.reportNameSuffix=chrome'
 
     - name: Run tests with Maven on macOS with Chrome
-      if: matrix.os == 'macos-13'
+      if: ${{ matrix.os == 'macos-13' }}
       run: mvn test -Pchrome -Dsurefire.reportNameSuffix=chrome
 
     - name: Cross-browser testing on Ubuntu with Chrome and Firefox
-      if: matrix.os == 'ubuntu-latest'
+      if: ${{ matrix.os == 'ubuntu-latest' }}
       run: mvn test -Dsurefire.suiteXmlFiles=xmlSuits/crossBrowser.xml
 
     - name: Run 'Smoke' group tests on Ubuntu
-      if: matrix.os == 'ubuntu-latest'
+      if: ${{ matrix.os == 'ubuntu-latest' }}
       run: mvn test -Psmoke
 
     - name: Run 'Regression' group tests on Ubuntu
-      if: matrix.os == 'ubuntu-latest'
+      if: ${{ matrix.os == 'ubuntu-latest' }}
       run: mvn test -Pregression
 
 #    - name: Cross-browser, smoke and regression testing for Ubuntu with Chrome and Firefox
