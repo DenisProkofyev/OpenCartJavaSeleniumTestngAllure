@@ -4,14 +4,11 @@
     <test name = "FirefoxTest" verbose="2">
         <parameter name="browser" value="firefox" />
         <classes>
-            <class name="com.opencart.test.NavigationTest">
-            </class>
-            <class name="com.opencart.test.SearchTest">
-            </class>
-            <class name="com.opencart.test.CartTest">
-            </class>
-            <class name="com.opencart.test.ProductTest">
-            </class>
+            <class name="com.opencart.test.NavigationTest"/>
+            <class name="com.opencart.test.SearchTest"/>
+            <class name="com.opencart.test.CartTest"/>
+            <class name="com.opencart.test.ProductTest"/>
+            <class name="com.opencart.test.LoginTest"/>
         </classes>
     </test>
 </suite>
