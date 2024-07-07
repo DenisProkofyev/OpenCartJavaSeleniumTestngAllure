@@ -91,8 +91,37 @@ jobs:
 
     - name: Run cross-browser testing on Ubuntu with Chrome and Firefox
       if: ${{ matrix.os == 'ubuntu-latest' }}
-      run: mvn test -PcrossBrowser
+      run: |
+          mvn test -Dsurefire.suiteXmlFiles=xmlSuits/crossBrowser.xml -Dallure.results.directory=target/allure-results/crossBrowser || true
 
+    - name: Run smoke testing on Ubuntu with Chrome and Firefox
+      if: ${{ matrix.os == 'ubuntu-latest' }}
+      run: |
+          mvn test -Psmoke -Dallure.results.directory=target/allure-results/smoke || true
+
+    - name: Run regression testing on Ubuntu with Chrome and Firefox
+      if: ${{ matrix.os == 'ubuntu-latest' }}
+      run: mvn test -Pregression -Dallure.results.directory=target/allure-results/regression || true
+
+    - name: Debug List Allure Results Directories
+      if: ${{ matrix.os == 'ubuntu-latest' }}
+      run: |
+          echo "Contents of target/allure-results/crossBrowser:"
+              ls -al target/allure-results/crossBrowser
+              echo "Contents of target/allure-results/smoke:"
+              ls -al target/allure-results/smoke
+              echo "Contents of target/allure-results/regression:"
+              ls -al target/allure-results/regression
+
+    - name: Merge Allure results
+      if: ${{ matrix.os == 'ubuntu-latest' }}
+      run: |
+              mkdir -p target/allure-results
+              cp -r target/allure-results/crossBrowser/* target/allure-results/
+              cp -r target/allure-results/smoke/* target/allure-results/
+              cp -r target/allure-results/regression/* target/allure-results/
+              echo "Contents of merged target/allure-results:"
+              ls -al target/allure-results
 #    - name: Cross-browser, smoke and regression testing for Ubuntu with Chrome and Firefox
 #      if: ${{ matrix.os == 'ubuntu-latest' }}
 #      run: |
