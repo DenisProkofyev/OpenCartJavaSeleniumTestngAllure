@@ -77,21 +77,53 @@ jobs:
       if: ${{ matrix.os == 'macos-13' }}
       run: mvn test -Pchrome -Dsurefire.reportNameSuffix=chrome
 
-    - name: Run 'Smoke' group tests on Ubuntu
-      if: ${{ matrix.os == 'ubuntu-latest' }}
-      run: mvn test -Psmoke
-
-    - name: Run 'Regression' group tests on Ubuntu
-      if: ${{ matrix.os == 'ubuntu-latest' }}
-      run: mvn test -Pregression
-
-    - name: Cross-browser testing on Ubuntu with Chrome and Firefox
-      if: ${{ matrix.os == 'ubuntu-latest' }}
-      run: mvn test -Dsurefire.suiteXmlFiles=xmlSuits/crossBrowser.xml
+#    - name: Run 'Smoke' group tests on Ubuntu
+#      if: ${{ matrix.os == 'ubuntu-latest' }}
+#      run: mvn test -Psmoke
+#
+#    - name: Run 'Regression' group tests on Ubuntu
+#      if: ${{ matrix.os == 'ubuntu-latest' }}
+#      run: mvn test -Pregression
+#
+#    - name: Cross-browser testing on Ubuntu with Chrome and Firefox
+#      if: ${{ matrix.os == 'ubuntu-latest' }}
+#      run: mvn test -PcrossBrowser
 
     - name: Run File loading test
       if: ${{ matrix.os == 'ubuntu-latest' }}
       run: mvn test -Dtest=LoadingTest
+
+    - name: Run 'Smoke' group tests on Ubuntu
+      if: ${{ matrix.os == 'ubuntu-latest' }}
+      run: mvn test -Psmoke -Dallure.results.directory=target/allure-results/smoke || true
+
+    - name: Run 'Regression' group tests on Ubuntu
+      if: ${{ matrix.os == 'ubuntu-latest' }}
+      run: mvn test -Pregression -Dallure.results.directory=target/allure-results/regression || true
+
+    - name: Cross-browser testing on Ubuntu with Chrome and Firefox
+      if: ${{ matrix.os == 'ubuntu-latest' }}
+      run: mvn test -PcrossBrowser -Dallure.results.directory=target/allure-results/crossBrowser || true
+
+    - name: Debug List Allure Results Directories
+      if: ${{ matrix.os == 'ubuntu-latest' }}
+      run: |
+        echo "Contents of target/allure-results/smoke:"
+          ls -al target/allure-results/smoke
+          echo "Contents of target/allure-results/regression:"
+          ls -al target/allure-results/regression
+          echo "Contents of target/allure-results/crossBrowser:"
+          ls -al target/allure-results/crossBrowser
+
+    - name: Merge Allure results
+      if: ${{ matrix.os == 'ubuntu-latest' }}
+      run: |
+          mkdir -p target/allure-results
+          cp -r target/allure-results/smoke/* target/allure-results/
+          cp -r target/allure-results/regression/* target/allure-results/
+          cp -r target/allure-results/crossBrowser/* target/allure-results/
+          echo "Contents of merged target/allure-results:"
+          ls -al target/allure-results
 
     - name: Test Reporter
       uses: dorny/test-reporter@v1.9.1
