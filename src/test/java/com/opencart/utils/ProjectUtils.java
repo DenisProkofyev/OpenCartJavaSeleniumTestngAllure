@@ -21,7 +21,7 @@ public class ProjectUtils {
     static {
         try (InputStream input = ProjectUtils.class.getClassLoader().getResourceAsStream("config.properties")) {
             if (input == null) {
-                System.out.println("Sorry, unable to find config.properties");
+                logf("Sorry, unable to find config.properties");
             }
             properties.load(input);
         } catch (IOException ex) {

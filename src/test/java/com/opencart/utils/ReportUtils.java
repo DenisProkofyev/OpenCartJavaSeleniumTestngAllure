@@ -10,7 +10,6 @@ public class ReportUtils {
         } else if(result.getStatus() == 2) {
             return "FAIL";
         }
-
         return "Unknown result";
     }
 }
