@@ -91,7 +91,7 @@ jobs:
 
     - name: Run File loading test
       if: ${{ matrix.os == 'ubuntu-latest' }}
-      run: mvn test -Dtest=LoadingTest
+      run: mvn test -Dtest=FileLoadingTest
 
     - name: Test Reporter
       uses: dorny/test-reporter@v1.9.1
