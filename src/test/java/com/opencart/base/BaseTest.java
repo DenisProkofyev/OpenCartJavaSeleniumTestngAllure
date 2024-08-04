@@ -7,7 +7,6 @@ import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.WebDriver;
 import org.testng.ITestContext;
 import org.testng.ITestResult;
-import org.testng.Reporter;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.BeforeSuite;
@@ -28,20 +27,20 @@ public abstract class BaseTest {
     @BeforeMethod(alwaysRun = true)
     @Parameters("browser")
     protected void setupDriver(@Optional("chrome") String browser, ITestContext context, ITestResult result) {
-        Reporter.log("RUN " + result.getMethod().getMethodName(), true);
+        ProjectUtils.logf("RUN " + result.getMethod().getMethodName());
 
         WebDriver driver = DriverUtils.createDriver(browser);
         this.threadLocalDriver.set(driver);
 
-        Reporter.log("Test Thread ID: " + Thread.currentThread().getId(), true);
-        Reporter.log("TEST SUITE: " + context.getCurrentXmlTest().getSuite().getName(), true);
-        Reporter.log("RUN " + result.getMethod().getMethodName(), true);
+        ProjectUtils.logf("Test Thread ID: " + Thread.currentThread().getId());
+        ProjectUtils.logf("TEST SUITE: " + context.getCurrentXmlTest().getSuite().getName());
+        ProjectUtils.logf("RUN " + result.getMethod().getMethodName());
 
         if (driver == null) {
-            Reporter.log("ERROR: Unknown 'browser' parameter - " + browser, true);
+            ProjectUtils.logf("ERROR: Unknown 'browser' parameter - " + browser);
             throw new IllegalArgumentException("Unknown 'browser' parameter - " + browser);
         } else {
-            Reporter.log("INFO: " + browser.substring(0, 1).toUpperCase() + browser.substring(1) + " driver created", true);
+            ProjectUtils.logf("INFO: " + browser.substring(0, 1).toUpperCase() + browser.substring(1) + " driver created");
         }
 
         driver.get(ProjectUtils.getBaseUrl());
@@ -52,7 +51,7 @@ public abstract class BaseTest {
     protected void tearDown(@Optional("chrome") String browser, ITestResult result) {
         WebDriver driver = getDriver();
 
-        Reporter.log(result.getMethod().getMethodName() + ": " + ReportUtils.getTestStatus(result), true);
+        ProjectUtils.logf(result.getMethod().getMethodName() + ": " + ReportUtils.getTestStatus(result));
 
         if (!result.isSuccess() && ProjectUtils.isServerRun()) {
             ProjectUtils.takeScreenshot(getDriver(), result);
@@ -60,12 +59,12 @@ public abstract class BaseTest {
 
         if (driver != null) {
             driver.quit();
-            Reporter.log("INFO: " + browser.substring(0, 1).toUpperCase() + browser.substring(1) +
-                    " driver closed", true);
-            Reporter.log("After Test Thread ID: " + Thread.currentThread().getId(), true);
+            ProjectUtils.logf("INFO: " + browser.substring(0, 1).toUpperCase() + browser.substring(1) +
+                    " driver closed");
+            ProjectUtils.logf("After Test Thread ID: " + Thread.currentThread().getId());
             threadLocalDriver.remove();
         } else {
-            Reporter.log("INFO: Driver is null", true);
+            ProjectUtils.logf("INFO: Driver is null");
         }
 
         ProjectUtils.logf("Execution time is %d sec\n", (result.getEndMillis() - result.getStartMillis()) / 1000);

@@ -14,7 +14,7 @@
             <class name="com.opencart.test.ProductTest"/>
             <class name="com.opencart.test.CartTest"/>
             <class name="com.opencart.test.SearchTest"/>
-            <class name="com.opencart.test.LoadingTest"/>
+            <class name="com.opencart.test.FileLoadingTest"/>
             <class name="com.opencart.test.LoginTest"/>
         </classes>
     </test>

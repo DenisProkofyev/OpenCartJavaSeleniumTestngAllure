@@ -5,18 +5,19 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>OpenCart Project</title>
 </head>
 
 <body>
   <h1>OpenCart Java Selenium TestNG Allure</h1>
 
-  <p>
-        This project is a test automation suite for the OpenCart online shop, utilizing <strong>Java</strong>, <strong>Selenium WebDriver</strong>,
-        <strong>TestNG</strong>, and <strong>Allure</strong> and Test Reporter for reporting. 
+<p>
+This project is a test automation suite for the OpenCart online shop, utilizing <strong>Java</strong>, <strong>Selenium WebDriver</strong>,
+<strong>TestNG</strong>, and <strong>Allure</strong> and Test Reporter for reporting. 
 
 Tests are executed daily via <strong>Jenkins</strong> for continuous integration and cross-browser
         compatibility.
-  </p>
+</p>
 
 <h2>Project Structure</h2>
 <div class="project-structure">
@@ -31,22 +32,10 @@ OpenCartJavaSeleniumTestngAllure/
 │   │       └── com/
 │   │           └── opencart/
 │   │               ├── base/
-│   │               │   └── BaseTest.java
-│   │               │   └── TestUtils.java
 │   │               ├── data/
-│   │               │   └── ProductIdData.java
-│   │               │   └── TestData.java
 │   │               ├── model/
 │   │               ├── test/
-│   │               │   └── CartTest.java
-│   │               │   └── LoadingTest.java
-│   │               │   └── NavigationTest.java
-│   │               │   └── ProductTest.java
-│   │               │   └── SearchTest.java
 │   │               ├── utils/
-│   │               │   └── DriverUtils.java
-│   │               │   └── ProjectUtils.java
-│   │               │   └── ReportUtils.java
 │   │               ├── FrameworkTest.java
 ├── target/
 │   ├── allure-results/
@@ -103,7 +92,7 @@ loading.</li>
 <p>For instance:</p>
 <h4>Ubuntu Cross-Browser Testing</h4>
   <pre><code>
-    mvn test -Dsurefire.suiteXmlFiles=xmlSuits/crossBrowser.xml
+    mvn test -PcrossBrowser
   </code></pre>
 
 <h4>Windows with Chrome</h4>
@@ -116,11 +105,22 @@ loading.</li>
     mvn test -Pfirefox -Dsurefire.reportNameSuffix=firefox
   </code></pre>
 
+<h4>Ubuntu 'Smoke' group tests</h4>
+  <pre><code>
+    mvn test -Psmoke
+  </code></pre>
+
+<h4>Ubuntu 'Regression' group tests</h4>
+  <pre><code>
+    mvn test -Pregression
+  </code></pre>
+
 <h2>GitHub Actions CI</h2>
   <p>This project uses GitHub Actions for Continuous Integration. </p>
 
 <h2>Test Reporting</h2>
-  <p>Test results are generated with Test Reporter for all operating systems, Allure Reports are generated for Ubuntu. Locally you can view the Allure report by running:</p>
+  <p>Test results are generated with Test Reporter for all operating systems, Allure Reports are generated for Ubuntu. 
+Locally you can view the Allure report by running:</p>
   <pre><code>
     mvn allure:serve
   </code></pre>
